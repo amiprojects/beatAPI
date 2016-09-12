@@ -40,4 +40,10 @@ define("NAME", "Name");
 
 define("ACCESS_TOKEN", "Access token");
 
+define("USER_ID", "User id");
+
+define("LEFT_HIT_COUNT", "Left hit count");
+
+define("RIGHT_HIT_COUNT", "Right hit count");
+
 ?>
