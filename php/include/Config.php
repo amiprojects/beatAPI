@@ -40,4 +40,8 @@ define("NAME", "Name");
 
 define("ACCESS_TOKEN", "Access token");
 
+define("USER_IMAGE","user image");
+
+define("USER_ID","user id");
+
 ?>

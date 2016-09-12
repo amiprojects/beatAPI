@@ -99,6 +99,22 @@ $app->post ( '/insert_user', function () use ($app) {
 } );
 
 /**
+ * add user image
+ */
+$app->post ( '/userImg', function () use ($app) {
+	$response = array ();
+	verifyRequiredParams ( array (
+			'user_image',
+			'user_id'
+	) );	
+	$user_image=$app->request->post ( 'user_image' );
+	$user_id=$app->request->post ( 'user_id' );
+	$obj=new dboperation();
+	$response=$obj->insertUserImage($user_image, $user_id);
+	echoRespnse ( 201, $response );
+} );
+
+/**
  * Verifying required params posted or not
  */
 function verifyRequiredParams($required_fields) {
