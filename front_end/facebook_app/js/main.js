@@ -1,5 +1,5 @@
-var serverURL = "https://192.168.0.112/beatAPI/beat/";
-var serverURL2 = "https://192.168.0.112/beat/";
+var serverURL = "https://assaisolutions.com/beat/";
+var serverURL2 = "https://assaisolutions.com/beat/";
 
 $(document).ready(function() {
 	// Instantiate a counter
