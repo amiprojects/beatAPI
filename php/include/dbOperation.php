@@ -41,9 +41,83 @@ class dboperation extends DbConnect {
 	}
 	
 	/**
+	 * <<<<<<< HEAD
+	 * Get total number of user
+	 */
+	function getTotalNumberOfUsers() {
+		$response = array ();
+		$sql = "SELECT COUNT(*) FROM users;";
+		$stmt = $this->conn->prepare ( $sql );
+		
+		if ($stmt) {
+			if ($stmt->execute ()) {
+				$stmt->store_result ();
+				$num_rows = $stmt->num_rows;
+				
+				if ($num_rows > 0) {
+					$stmt->bind_result ( $quantity );
+					$stmt->fetch ();
+					
+					$response ["error"] = false;
+					$response ["msg"] = DATA_FOUND;
+					$response ["total_user"] = $quantity;
+				} else {
+					$response ["error"] = true;
+					$response ["msg"] = DATA_NOT_FOUND;
+				}
+			} else {
+				$response ["error"] = true;
+				$response ["msg"] = INSERT_FAILED;
+			}
+		} else {
+			$response ["error"] = true;
+			$response ["msg"] = QUERY_EXCEPTION;
+		}
+		return $response;
+	}
+	
+	/**
+	 * Insert hit count
+	 */
+	function insertIntoHitCounter(hit_counter $ht_counter) {
+		$response = array ();
+		$date = date ( "Y-m-d H:i:s" );
+		$this->conn->autocommit ( false );
+		$sql = "INSERT INTO hit_counter (user_id, left_hit_count, right_hit_count, total_hit_count, date_time) VALUES (?,?,?,?,?);";
+		$stmt = $this->conn->prepare ( $sql );
+		
+		if ($stmt) {
+			$stmt->bind_param ( "iiiis", $ht_counter->user_id, $ht_counter->left_hit_count, $ht_counter->right_hit_count, $ht_counter->total_hit_count, $date );
+			if ($stmt->execute ()) {
+				$this->conn->commit ();
+				
+				$sql1 = "SELECT MAX(total_hit_count) FROM hit_counter where user_id=?;";
+				$stmt1 = $this->conn->prepare ( $sql1 );
+				$stmt1->bind_param ( "i", $ht_counter->user_id );
+				$stmt1->execute ();
+				$stmt1->store_result ();
+				$stmt1->bind_result ( $max_hit );
+				$stmt1->fetch ();
+				
+				$response ["error"] = false;
+				$response ["msg"] = INSERT_SUCCESS;
+				$response ["current_hit"] = $ht_counter->total_hit_count;
+				$response ["max_hit"] = $max_hit;
+			} else {
+				$response ["error"] = true;
+				$response ["msg"] = INSERT_FAILED;
+			}
+		} else {
+			$response ["error"] = true;
+			$response ["msg"] = QUERY_EXCEPTION;
+		}
+		return $response;
+	}
+	/**
 	 * insert user image
-	 * @param unknown $image
-	 * @param unknown $userId
+	 *
+	 * @param unknown $image        	
+	 * @param unknown $userId        	
 	 * @return boolean[]|string[]
 	 */
 	function insertUserImage($image, $userId) {
@@ -57,13 +131,13 @@ class dboperation extends DbConnect {
 		
 		if ($stmt) {
 			$stmt->bind_param ( "ss", $userId, $date );
-			if ($stmt->execute ()) {				
+			if ($stmt->execute ()) {
 				$last_id = $stmt->insert_id;
 				
-				$fp = fopen ( $savePath . '/' . $last_id.".jpg", "wb" );
+				$fp = fopen ( $savePath . '/' . $last_id . ".jpg", "wb" );
 				fwrite ( $fp, base64_decode ( $image ) );
 				fclose ( $fp );
-				$imgURL = "beat/php/assets/" . $last_id.".jpg";
+				$imgURL = "beat/php/assets/" . $last_id . ".jpg";
 				
 				$stmtup = $this->conn->prepare ( "update user_image set user_image_url=? where id=?;" );
 				if ($stmtup) {
@@ -72,15 +146,15 @@ class dboperation extends DbConnect {
 						$this->conn->commit ();
 						$response ["error"] = false;
 						$response ["msg"] = INSERT_SUCCESS;
-						$response ["image_url"]=$imgURL;
+						$response ["image_url"] = $imgURL;
 					} else {
 						$response ["error"] = true;
-						$response ["msg"] = "Image ".INSERT_FAILED;
+						$response ["msg"] = "Image " . INSERT_FAILED;
 					}
 				} else {
 					$response ["error"] = true;
 					$response ["msg"] = QUERY_EXCEPTION;
-				}				
+				}
 			} else {
 				$response ["error"] = true;
 				$response ["msg"] = INSERT_FAILED;

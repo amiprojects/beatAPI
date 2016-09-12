@@ -99,18 +99,57 @@ $app->post ( '/insert_user', function () use ($app) {
 } );
 
 /**
+ * total number of users
+ */
+$app->get ( '/total_user', function () use ($app) {
+	$response = array ();
+	
+	$obj = new dboperation ();
+	
+	$response = $obj->getTotalNumberOfUsers ();
+	echoRespnse ( 201, $response );
+} );
+
+/**
+ * for data inserting into hit_counter table
+ */
+$app->post ( '/insert_hitcounter', function () use ($app) {
+	$response = array ();
+	
+	verifyRequiredParams ( array (
+			'user_id',
+			'left_hit_count',
+			'right_hit_count' 
+	) );
+	
+	$user_id = $app->request->post ( 'user_id' );
+	$left_hit_count = $app->request->post ( 'left_hit_count' );
+	$right_hit_count = $app->request->post ( 'right_hit_count' );
+	$total_hit_count = $left_hit_count + $right_hit_count;
+	
+	$obj = new dboperation ();
+	$hit_counter = new hit_counter ();
+	$hit_counter->user_id = $user_id;
+	$hit_counter->left_hit_count = $left_hit_count;
+	$hit_counter->right_hit_count = $right_hit_count;
+	$hit_counter->total_hit_count = $total_hit_count;
+	
+	$response = $obj->insertIntoHitCounter ( $hit_counter );
+	echoRespnse ( 201, $response );
+} );
+/**
  * add user image
  */
 $app->post ( '/userImg', function () use ($app) {
 	$response = array ();
 	verifyRequiredParams ( array (
 			'user_image',
-			'user_id'
-	) );	
-	$user_image=$app->request->post ( 'user_image' );
-	$user_id=$app->request->post ( 'user_id' );
-	$obj=new dboperation();
-	$response=$obj->insertUserImage($user_image, $user_id);
+			'user_id' 
+	) );
+	$user_image = $app->request->post ( 'user_image' );
+	$user_id = $app->request->post ( 'user_id' );
+	$obj = new dboperation ();
+	$response = $obj->insertUserImage ( $user_image, $user_id );
 	echoRespnse ( 201, $response );
 } );
 
