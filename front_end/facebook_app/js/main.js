@@ -1,5 +1,5 @@
-var serverURL = "http://192.168.0.112/beatAPI/beat/";
-var serverURL2 = "http://192.168.0.112/beat/";
+var serverURL = "https://192.168.0.112/beatAPI/beat/";
+var serverURL2 = "https://192.168.0.112/beat/";
 
 $(document).ready(function() {
 	// Instantiate a counter
@@ -25,13 +25,15 @@ function getTotalUserCount(clock){
 		url:serverURL+"php/v1/total_user",
 		type: "get",
 		dataType:"json",
-		success:function(data){
+		success:function(data){			
 			if(!data.error){
-				//clock.setTime(data.total_user);
 				for(i=0;i<data.total_user;i++){
 					window.setTimeout(function(){clock.increment();},1);					
 				}
 			}
+		},
+		error:function(a,b,c){
+			console.log(JSON.stringify(a));			
 		}
 	} );
 }

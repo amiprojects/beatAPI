@@ -6,18 +6,17 @@ function statusChangeCallback(response) {
 	// app know the current login status of the person.
 	// Full docs on the response object can be found in the documentation
 	// for FB.getLoginStatus().
-	if (response.status === 'connected') {
-		// Logged into your app and Facebook.
-		testAPI();
+	if (response.status === 'connected') {		
+		fbconnect();
 	} else if (response.status === 'not_authorized') {
 		// The person is logged into Facebook, but not your app.
-		document.getElementById('status').innerHTML = 'Please log '
-				+ 'into this app.';
+		console.log('Please log '
+				+ 'into this app.');
 	} else {
 		// The person is not logged into Facebook, so we're not sure if
 		// they are logged into this app or not.
-		document.getElementById('status').innerHTML = 'Please log '
-				+ 'into Facebook.';
+		console.log('Please log '
+				+ 'into Facebook.');
 	}
 }
 
@@ -35,7 +34,7 @@ window.fbAsyncInit = function() {
 		cookie : true, // enable cookies to allow the server to access
 		// the session
 		xfbml : true, // parse social plugins on this page
-		version : 'v2.5' // use graph api version 2.5
+		version : 'v2.7' // use graph api version 2.5
 	});
 
 	// Now that we've initialized the JavaScript SDK, we call
@@ -69,21 +68,35 @@ window.fbAsyncInit = function() {
 
 // Here we run a very simple test of the Graph API after login is
 // successful. See statusChangeCallback() for when this call is made.
-function testAPI() {
-	console.log('Welcome!  Fetching your information.... ');
+function fbconnect() {
 	FB.api('/me', function(response) {
-		console.log('Successful login for: ' + JSON.stringify(response));
-		document.getElementById('status').innerHTML = 'Thanks for logging in, '
-				+ response.name + '!';
+		alert('Successful login for: ' + JSON.stringify(response));	
+		$.ajax({
+			url:serverURL+"php/v1/insert_user",
+			type: "post",
+			dataType:"json",
+			data:{
+				fb_user_id : response.id,
+				name : response.name,
+				access_token : "*****"
+			},
+			success:function(data){			
+				console.log(JSON.stringify(data));
+				window.location="select_image.html";
+			},
+			error:function(a,b,c){
+				console.log(JSON.stringify(a));			
+			}
+		});
 	});
 }
 
 function logout() {
-
 	FB.logout(function(response) {
 		checkLoginState();
 	});
 }
+
 function myFun() {
 	FB.api('/me/feed', 'post', {
 		message : 'My test post'
