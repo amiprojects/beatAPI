@@ -48,6 +48,4 @@ define("RIGHT_HIT_COUNT", "Right hit count");
 
 define("USER_IMAGE","user image");
 
-define("USER_ID","user id");
-
 ?>
