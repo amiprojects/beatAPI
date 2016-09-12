@@ -34,4 +34,10 @@ define ( "DATA_FOUND", "Data found" );
 
 define ( "DATA_NOT_FOUND", "No data found" );
 
+define("FB_USER_ID","Facebook user id");
+
+define("NAME", "Name");
+
+define("ACCESS_TOKEN", "Access token");
+
 ?>

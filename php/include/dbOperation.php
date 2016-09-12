@@ -5,7 +5,7 @@ class dboperation extends DbConnect {
 	public $db;
 	
 	/**
-	 * for Database connection 
+	 * for Database connection
 	 */
 	function __construct() {
 		// opening db connection
@@ -28,6 +28,7 @@ class dboperation extends DbConnect {
 				$this->conn->commit ();
 				$response ["error"] = false;
 				$response ["msg"] = INSERT_SUCCESS;
+				$response ["user_id"] = $stmt->insert_id;
 			} else {
 				$response ["error"] = true;
 				$response ["msg"] = INSERT_FAILED;
@@ -38,6 +39,7 @@ class dboperation extends DbConnect {
 		}
 		return $response;
 	}
-
+	
+	
 }
 ?>
