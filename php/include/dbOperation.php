@@ -41,6 +41,7 @@ class dboperation extends DbConnect {
 	}
 	
 	/**
+	 * <<<<<<< HEAD
 	 * Get total number of user
 	 */
 	function getTotalNumberOfUsers() {
@@ -93,7 +94,7 @@ class dboperation extends DbConnect {
 				$sql1 = "SELECT MAX(total_hit_count) FROM hit_counter where user_id=?;";
 				$stmt1 = $this->conn->prepare ( $sql1 );
 				$stmt1->bind_param ( "i", $ht_counter->user_id );
-				$stmt1->execute();
+				$stmt1->execute ();
 				$stmt1->store_result ();
 				$stmt1->bind_result ( $max_hit );
 				$stmt1->fetch ();
@@ -102,6 +103,58 @@ class dboperation extends DbConnect {
 				$response ["msg"] = INSERT_SUCCESS;
 				$response ["current_hit"] = $ht_counter->total_hit_count;
 				$response ["max_hit"] = $max_hit;
+			} else {
+				$response ["error"] = true;
+				$response ["msg"] = INSERT_FAILED;
+			}
+		} else {
+			$response ["error"] = true;
+			$response ["msg"] = QUERY_EXCEPTION;
+		}
+		return $response;
+	}
+	/**
+	 * insert user image
+	 *
+	 * @param unknown $image        	
+	 * @param unknown $userId        	
+	 * @return boolean[]|string[]
+	 */
+	function insertUserImage($image, $userId) {
+		$response = array ();
+		$this->conn->autocommit ( false );
+		$savePath = "../assets/";
+		$date = Date ( "Y-m-d H:i:s" );
+		
+		$sql = "INSERT INTO user_image (user_id, date_time) VALUES (?,?);";
+		$stmt = $this->conn->prepare ( $sql );
+		
+		if ($stmt) {
+			$stmt->bind_param ( "ss", $userId, $date );
+			if ($stmt->execute ()) {
+				$last_id = $stmt->insert_id;
+				
+				$fp = fopen ( $savePath . '/' . $last_id . ".jpg", "wb" );
+				fwrite ( $fp, base64_decode ( $image ) );
+				fclose ( $fp );
+				$imgURL = "beat/php/assets/" . $last_id . ".jpg";
+				
+				$stmtup = $this->conn->prepare ( "update user_image set user_image_url=? where id=?;" );
+				if ($stmtup) {
+					$stmtup->bind_param ( "si", $imgURL, $last_id );
+					if ($stmtup->execute ()) {
+						$this->conn->commit ();
+						$response ["error"] = false;
+						$response ["msg"] = INSERT_SUCCESS;
+						$response ["image_url"] = $imgURL;
+					} else {
+						$response ["error"] = true;
+						$response ["msg"] = "Image " . INSERT_FAILED;
+					}
+				} else {
+					$response ["error"] = true;
+					$response ["msg"] = QUERY_EXCEPTION;
+				}
 			} else {
 				$response ["error"] = true;
 				$response ["msg"] = INSERT_FAILED;

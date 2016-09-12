@@ -13,7 +13,12 @@ class hit_counter {
 	public $total_hit_count;
 	public $date_time;
 }
+class user_image {
+	public $id;
+	public $user_id;
+	public $user_image_url;
+	public $date_time;
+}
 class temp {
-	
 }
 ?>
