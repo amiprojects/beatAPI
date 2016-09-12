@@ -2,20 +2,21 @@ var serverURL = "http://192.168.0.112/beatAPI/beat/";
 var serverURL2 = "http://192.168.0.112/beat/";
 
 $(document).ready(function() {
-
 	// Instantiate a counter
 	clock = new FlipClock($('.clock'), 0, {
 		clockFace : 'Counter',
-		// autoStart: true,
 		minimumDigits : 3
 	});
 	getTotalUserCount(clock);
+	count(clock);
 });
 
 function count(clock) {
 	window.setTimeout(function() {
-		clock.increment();
-		count(clock);
+		$.ajax(serverURL+"php/v1/total_user").success(function(data, status, headers, config) {
+			clock.setTime(data.total_user);
+			count(clock);
+		});
 	}, 1000);
 }
 
@@ -27,7 +28,7 @@ function getTotalUserCount(clock){
 		success:function(data){
 			if(!data.error){
 				//clock.setTime(data.total_user);
-				for(i=0;i<12345;i++){
+				for(i=0;i<data.total_user;i++){
 					window.setTimeout(function(){clock.increment();},1);					
 				}
 			}
