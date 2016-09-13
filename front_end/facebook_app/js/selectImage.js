@@ -8,8 +8,7 @@ function readURL(input) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-        	alert(e.target.result);
-
+        	//alert(e.target.result);
             $('#selfImage').attr('src', e.target.result);
         }
 
@@ -17,15 +16,33 @@ function readURL(input) {
     }
 }
 
-//$("#imgInp").change(function(){
-//	alert("hello1");
-//    readURL(this);
-//});
-
-function test(thi){
+function uploadImage(thi){
     readURL(thi);
 }
 
-function uploadImage(){
-	
+function upload(){
+	$("#imgInp").trigger('click');
+}
+
+function uploadCam(){
+	$("#my_camera").show();
+	Webcam.set({
+		width: 320,
+		height: 240,
+		image_format: 'jpeg',
+		jpeg_quality: 90
+	});
+	Webcam.attach( '#my_camera' );
+	$("#camra-upload").attr('onclick', "take_snapshot();");
+}
+
+function take_snapshot() {
+	// take snapshot and get image data
+	Webcam.snap( function(data_uri) {
+		alert(data_uri);
+		$('#selfImage').attr('src', data_uri);
+		$("#my_camera").hide();
+		Webcam.reset();
+		$("#camra-upload").attr('onclick', "uploadCam();");
+	} );
 }

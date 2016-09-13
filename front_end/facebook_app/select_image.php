@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php 
+session_start();
+?>
 <html>
 <head>
 
@@ -10,6 +12,7 @@
 
 <script src="js/jquery-1.12.0.min.js"></script>
 <script src="js/jqueryMobile/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/webcam.min.js"></script>
 
 <script src="js/selectImage.js"></script>
 
@@ -71,6 +74,7 @@ body {
 				<div style="width: 30%; height: 1px; float: left;"></div>
 				<div
 					style="width: 40%; height: auto; float: left; text-align: center;">
+					<div id="my_camera"></div>
 					<img style="width: 68%;" src="images/upload_img.png" id="selfImage">
 				</div>
 				<div style="width: 30%; height: 1px; float: left;"></div>
@@ -82,14 +86,15 @@ body {
 				<div
 					style="width: 40%; height: auto; float: left; text-align: center;">
 					<!--<div style="width:100%;height:auto;float:left;">-->
-					<div
-						style="width: 48%; height: auto; float: left; background-color: #008bcb;">
+					<div id="camra-upload"
+						style="width: 48%; height: auto; float: left; background-color: #008bcb;" onclick="uploadCam();">
 						<img style="width: 35px; padding-top: 5px;"
 							src="images/take_photo.png">
 					</div>
 					<div style="width: 2%; height: 1px; float: left;"></div>
 					<div
-						style="width: 48%; height: auto; float: left; background-color: #008bcb;" onclick="uploadImage();">
+						style="width: 48%; height: auto; float: left; background-color: #008bcb;" onclick="upload();">
+						 
 						<img style="width: 35px; padding-top: 5px;"
 							src="images/upload.png">
 					</div>
@@ -101,8 +106,9 @@ body {
 			<div style="width: 100%; height: 20px; float: left;"></div>
 		</div>
 	</div>
+<input type='file' id="imgInp" onchange="uploadImage(this)" style="display: none;"/>
 
-
+<input type="hidden" id="userId" value="<?php echo $_SESSION["userDetails"]["userId"] ?>"/>
 
 </body>
 </html>
