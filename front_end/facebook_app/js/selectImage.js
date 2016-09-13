@@ -22,7 +22,7 @@ function upload() {
 }
 
 function uploadCam() {
-	$("#my_camera").show();
+	$("#camera_pop").popup( "open");	
 	Webcam.set({
 		width : 320,
 		height : 240,
@@ -37,11 +37,13 @@ function take_snapshot() {
 	// take snapshot and get image data
 	Webcam.snap(function(data_uri) {
 		$('#selfImage').attr('src', data_uri);
-		$("#my_camera").hide();
+		//$("#my_camera").hide();
+		$( "#camera_pop" ).popup( "close");
 		Webcam.reset();
 		$("#camra-upload").attr('onclick', "uploadCam();");
 	});
 }
+
 
 function uploadUserImage() {
 	if ($('#selfImage').attr('src').split(",").length > 1) {

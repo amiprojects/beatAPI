@@ -77,7 +77,12 @@ body {
 				<div style="width: 30%; height: 1px; float: left;"></div>
 				<div
 					style="width: 40%; height: auto; float: left; text-align: center;">
-					<div id="my_camera"></div>
+					
+					<div data-theme="b" data-role="popup" data-dismissible="false" data-position-to="window" id="camera_pop">
+						<div id="my_camera"></div>	
+						<input type="button" value="TAKE A SNAPSHOT" onclick="take_snapshot();">				
+					</div>
+					
 					<img onclick="uploadUserImage();" style="width: 68%;" src="images/upload_img.png" id="selfImage">
 				</div>
 				<div style="width: 30%; height: 1px; float: left;"></div>
