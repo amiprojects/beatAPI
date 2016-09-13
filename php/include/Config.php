@@ -5,20 +5,20 @@
  * Database configuration
  
  */
-define ( 'DB_USERNAME', 'root' );
-define ( 'DB_PASSWORD', '' );
-define ( 'DB_HOST', 'localhost' );
-define ( 'DB_NAME', 'beat' );
-define ( 'DB_PORT', 3306 );
+// define ( 'DB_USERNAME', 'root' );
+// define ( 'DB_PASSWORD', '' );
+// define ( 'DB_HOST', 'localhost' );
+// define ( 'DB_NAME', 'beat' );
+// define ( 'DB_PORT', 3306 );
 
 /**
  * for server
  */
-// define ( 'DB_USERNAME', 'assaisol_beat008' );
-// define ( 'DB_PASSWORD', 'aminfotrix008' );
-// define ( 'DB_HOST', 'localhost' );
-// define ( 'DB_NAME', 'assaisol_AMi_beat' );
-// define ( 'DB_PORT', 3306 );
+define ( 'DB_USERNAME', 'assaisol_beat008' );
+define ( 'DB_PASSWORD', 'aminfotrix008' );
+define ( 'DB_HOST', 'localhost' );
+define ( 'DB_NAME', 'assaisol_AMi_beat' );
+define ( 'DB_PORT', 3306 );
 
 define ( 'QUERY_EXCEPTION', 'Please check mysql query. Fatal error' );
 
