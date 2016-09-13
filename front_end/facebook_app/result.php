@@ -15,6 +15,7 @@ session_start ();
 <script src="js/url.js"></script>
 <script src="js/jquery-1.12.0.min.js"></script>
 <script src="js/jqueryMobile/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/result.js"></script>
 
 <style>
 body {
@@ -100,7 +101,7 @@ body {
 								style="width: 100%; height: 80%; float: left; border: 2px solid black; border-radius: 15%;">
 								<div
 									style="width: 100%; height: 60%; float: left; text-align: center;">
-									<span><strong>25</strong></span>
+									<strong><span id="totalHit">0</span></strong>
 								</div>
 								<div
 									style="width: 100%; height: 40%; float: left; text-align: center;">
@@ -113,7 +114,8 @@ body {
 						</div>
 
 
-						<div style="width: 32%; height: auto; float: left;">
+						<div style="width: 32%; height: auto; float: left;"
+							onclick="hitFunction();">
 							<img style="width: 100%;" src="images/right_hand.png">
 						</div>
 					</div>
