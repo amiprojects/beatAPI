@@ -46,7 +46,7 @@ function take_snapshot() {
 function uploadUserImage() {
 	if ($('#selfImage').attr('src').split(",").length > 1) {
 		$.ajax({
-			url : serverURL + "php/v1/userImg",
+			url : serverURL2 + "php/v1/userImg",
 			type : 'post',
 			data : {
 				user_image : $('#selfImage').attr('src').split(",")[1],
@@ -57,6 +57,7 @@ function uploadUserImage() {
 				if (data.error) {
 					alert(data.msg);
 				} else {
+					window.sessionStorage.setItem("selfImage", data.image_url);
 					window.location = "result.php";
 				}
 			}

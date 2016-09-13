@@ -73,7 +73,8 @@ body {
 				<div style="width: 30%; height: 1px; float: left;"></div>
 				<div
 					style="width: 40%; height: auto; float: left; text-align: center;">
-					<img style="width: 100%;" src="images/upload_img.png">
+					<!-- <img style="width: 100%;" src="images/upload_img.png">-->
+					<img style="width: 100%;" src="images/upload_img.png" id="selfImage">
 				</div>
 				<div style="width: 30%; height: 1px; float: left;"></div>
 			</div>

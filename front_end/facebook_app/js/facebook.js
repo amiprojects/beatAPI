@@ -92,7 +92,6 @@ function fbconnect() {
 						if (data1.error) {
 							alert('session error');
 						} else {
-							window.sessionStorage.setItem("imageUrl", data1.image_url);
 							window.location = "select_image.php";
 						}
 					}
