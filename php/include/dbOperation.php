@@ -30,12 +30,17 @@ class dboperation extends DbConnect {
 				$response ["msg"] = INSERT_SUCCESS;
 				
 				
-				if($stmt->insert_id==0){
-					$stmt1 = $this->conn->prepare ( "select id from users where facebook_user_id=?" );
-					$stmt->bind_param ( "s", $usr->facebook_user_id);
-					$stmt->execute ();
-					$stmt->store_result($uid);
-					$response ["user_id"] = $uid;
+				if(($stmt->insert_id)==0){
+					$stmt1 = $this->conn->prepare ( "select id from users where facebook_user_id = ?" );
+					$stmt1->bind_param ( "s", $usr->facebook_user_id);
+					$stmt1->execute ();
+					$stmt1->store_result();
+					$num_rows = $stmt1->num_rows;
+					if ($num_rows > 0) {
+						$stmt1->bind_result($uid);
+						$stmt1->fetch ();
+						$response ["user_id"] = $uid;
+					}					
 				}else{
 					$response ["user_id"] = $stmt->insert_id;
 				}
