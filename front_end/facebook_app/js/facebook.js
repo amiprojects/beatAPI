@@ -72,7 +72,7 @@ function fbconnect() {
 		// alert('Successful login for: ' + JSON.stringify(response));
 		
 		$.ajax({
-			url : serverURL + "php/v1/insert_user",
+			url : serverURL2 + "php/v1/insert_user",
 			type : "post",
 			dataType : "json",
 			data : {
@@ -92,6 +92,7 @@ function fbconnect() {
 						if (data1.error) {
 							alert('session error');
 						} else {
+							window.sessionStorage.setItem("imageUrl", data1.image_url);
 							window.location = "select_image.php";
 						}
 					}
