@@ -67,9 +67,18 @@ body {
 
 
 		<div data-role="main">
+			<div
+				style="width: 100%; height: 35px; float: left; padding-top: 5px;">
+				<div style="width: 30%; height: 1px; float: left;"></div>
+				<div
+					style="width: 40%; height: 35px; float: left; text-align: center; color: red;">
+					<strong><span id="hitTimer">60</span></strong>
+				</div>
+				<div style="width: 30%; height: 1px; float: left;"></div>
+			</div>
 
 			<div
-				style="width: 100%; height: auto; float: left; padding-top: 40px;">
+				style="width: 100%; height: auto; float: left; padding-top: 0px;">
 				<div style="width: 30%; height: 1px; float: left;"></div>
 				<div
 					style="width: 40%; height: auto; float: left; text-align: center;">
@@ -85,7 +94,8 @@ body {
 					style="width: 40%; height: auto; float: left; text-align: center;">
 					<!--<img style="width: 68%;" src="images/upload_img.png">-->
 					<div style="width: 100%; height: auto; float: left;">
-						<div style="width: 32%; height: auto; float: left;">
+						<div style="width: 32%; height: auto; float: left;"
+							onclick="leftHitFunction();">
 							<img style="width: 100%;" src="images/left_hand.png">
 						</div>
 
@@ -98,7 +108,7 @@ body {
 								style="width: 100%; height: 80%; float: left; border: 2px solid black; border-radius: 15%;">
 								<div
 									style="width: 100%; height: 60%; float: left; text-align: center;">
-									<span><strong>25</strong></span>
+									<strong><span id="totalHit">0</span></strong>
 								</div>
 								<div
 									style="width: 100%; height: 40%; float: left; text-align: center;">
@@ -107,11 +117,11 @@ body {
 							</div>
 
 							<div style="width: 100%; height: 10%; float: left;"></div>
-
 						</div>
 
 
-						<div style="width: 32%; height: auto; float: left;">
+						<div style="width: 32%; height: auto; float: left;"
+							onclick="rightHitFunction();">
 							<img style="width: 100%;" src="images/right_hand.png">
 						</div>
 					</div>
