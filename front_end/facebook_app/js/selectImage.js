@@ -1,48 +1,67 @@
-$(document).ready(function() {
-	
-});
+$(document).ready(function() {});
 
 function readURL(input) {
-	
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
+	if (input.files && input.files[0]) {
+		var reader = new FileReader();
 
-        reader.onload = function (e) {
-        	//alert(e.target.result);
-            $('#selfImage').attr('src', e.target.result);
-        }
+		reader.onload = function(e) {
+			//alert(e.target.result);
+			$('#selfImage').attr('src', e.target.result);
+		}
 
-        reader.readAsDataURL(input.files[0]);
-    }
+		reader.readAsDataURL(input.files[0]);
+	}
 }
 
-function uploadImage(thi){
-    readURL(thi);
+function uploadImage(thi) {
+	readURL(thi);
 }
 
-function upload(){
+function upload() {
 	$("#imgInp").trigger('click');
 }
 
-function uploadCam(){
+function uploadCam() {
 	$("#my_camera").show();
 	Webcam.set({
-		width: 320,
-		height: 240,
-		image_format: 'jpeg',
-		jpeg_quality: 90
+		width : 320,
+		height : 240,
+		image_format : 'jpeg',
+		jpeg_quality : 90
 	});
-	Webcam.attach( '#my_camera' );
+	Webcam.attach('#my_camera');
 	$("#camra-upload").attr('onclick', "take_snapshot();");
 }
 
 function take_snapshot() {
 	// take snapshot and get image data
-	Webcam.snap( function(data_uri) {
-		alert(data_uri);
+	Webcam.snap(function(data_uri) {
 		$('#selfImage').attr('src', data_uri);
 		$("#my_camera").hide();
 		Webcam.reset();
 		$("#camra-upload").attr('onclick', "uploadCam();");
-	} );
+	});
+}
+
+function uploadUserImage() {
+	if ($('#selfImage').attr('src').split(",").length > 1) {
+		$.ajax({
+			url : serverURL + "php/v1/userImg",
+			type : 'post',
+			data : {
+				user_image : $('#selfImage').attr('src').split(",")[1],
+				user_id : $("#userId").val()
+			},
+			dataType : "json",
+			success : function(data) {
+				if (data.error) {
+					alert(data.msg);
+				} else {
+					window.location = "result.php";
+				}
+			}
+		});
+	} else {
+		alert("Please upload an image.");
+	}
 }

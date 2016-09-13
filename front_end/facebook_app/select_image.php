@@ -1,6 +1,8 @@
 <?php 
 session_start();
 ?>
+
+<!DOCTYPE html>
 <html>
 <head>
 
@@ -10,6 +12,7 @@ session_start();
 <link rel="stylesheet"
 	href="js/jqueryMobile/jquery.mobile-1.4.5.min.css" />
 
+<script src="js/url.js"></script>
 <script src="js/jquery-1.12.0.min.js"></script>
 <script src="js/jqueryMobile/jquery.mobile-1.4.5.min.js"></script>
 <script src="js/webcam.min.js"></script>
@@ -75,7 +78,7 @@ body {
 				<div
 					style="width: 40%; height: auto; float: left; text-align: center;">
 					<div id="my_camera"></div>
-					<img style="width: 68%;" src="images/upload_img.png" id="selfImage">
+					<img onclick="uploadUserImage();" style="width: 68%;" src="images/upload_img.png" id="selfImage">
 				</div>
 				<div style="width: 30%; height: 1px; float: left;"></div>
 			</div>

@@ -70,21 +70,7 @@ window.fbAsyncInit = function() {
 function fbconnect() {
 	FB.api('/me', function(response) {
 		// alert('Successful login for: ' + JSON.stringify(response));
-		$.ajax({
-			url : serverURL + "php/v1/set-session.php",
-			type : 'post',
-			data : {
-				userId : response.id
-			},
-			dataType : "json",
-			success : function(data1) {
-				if (data1.error) {
-					alert('session error');
-				} else {
-					// alert(JSON.stringify(data1));
-				}
-			}
-		});
+		
 		$.ajax({
 			url : serverURL + "php/v1/insert_user",
 			type : "post",
@@ -94,9 +80,22 @@ function fbconnect() {
 				name : response.name,
 				access_token : "*****"
 			},
-			success : function(data) {
-				console.log(JSON.stringify(data));
-				window.location = "select_image.php";
+			success : function(data) {	
+				$.ajax({
+					url : serverURL + "php/v1/set-session.php",
+					type : 'post',
+					data : {
+						userId : data.user_id
+					},
+					dataType : "json",
+					success : function(data1) {
+						if (data1.error) {
+							alert('session error');
+						} else {
+							window.location = "select_image.php";
+						}
+					}
+				});
 			},
 			error : function(a, b, c) {
 				console.log(JSON.stringify(a));
