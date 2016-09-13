@@ -72,6 +72,20 @@ function fbconnect() {
 	FB.api('/me', function(response) {
 		alert('Successful login for: ' + JSON.stringify(response));	
 		$.ajax({
+			url:serverURL+"php/v1/set-session.php",
+			type:'post',
+			data: {userId : response.id},
+			dataType:"json",
+			success: function(data1){
+				if(data1.error){
+					alert('session error');	
+				}else{
+					//window.location=serverHome+"admin/city-master.php";
+					alert(JSON.stringify(data1));
+				}
+			}	
+		});
+		$.ajax({
 			url:serverURL+"php/v1/insert_user",
 			type: "post",
 			dataType:"json",
@@ -82,7 +96,7 @@ function fbconnect() {
 			},
 			success:function(data){			
 				console.log(JSON.stringify(data));
-				window.location="select_image.html";
+				window.location="select_image.php";
 			},
 			error:function(a,b,c){
 				console.log(JSON.stringify(a));			
