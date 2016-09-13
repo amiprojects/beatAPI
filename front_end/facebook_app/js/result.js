@@ -31,3 +31,9 @@ function timer() {
 		return;
 	}
 }
+
+$(document).ready(
+		function() {
+			$("#selfImage").attr("src",
+					domain + window.sessionStorage.getItem("selfImage"));
+		});
