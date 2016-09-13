@@ -5,7 +5,7 @@ function readURL(input) {
 		var reader = new FileReader();
 
 		reader.onload = function(e) {
-			//alert(e.target.result);
+			// alert(e.target.result);
 			$('#selfImage').attr('src', e.target.result);
 		}
 
@@ -22,7 +22,7 @@ function upload() {
 }
 
 function uploadCam() {
-	$("#camera_pop").popup( "open");	
+	$("#camera_pop").popup("open");
 	Webcam.set({
 		width : 320,
 		height : 240,
@@ -37,13 +37,11 @@ function take_snapshot() {
 	// take snapshot and get image data
 	Webcam.snap(function(data_uri) {
 		$('#selfImage').attr('src', data_uri);
-		//$("#my_camera").hide();
-		$( "#camera_pop" ).popup( "close");
+		$("#camera_pop").popup("close");
 		Webcam.reset();
 		$("#camra-upload").attr('onclick', "uploadCam();");
 	});
 }
-
 
 function uploadUserImage() {
 	if ($('#selfImage').attr('src').split(",").length > 1) {
@@ -52,7 +50,8 @@ function uploadUserImage() {
 			type : 'post',
 			data : {
 				user_image : $('#selfImage').attr('src').split(",")[1],
-				user_id : $("#userId").val()
+				// user_id : $("#userId").val()
+				user_id : window.sessionStorage.getItem("userId")
 			},
 			dataType : "json",
 			success : function(data) {
