@@ -6,17 +6,15 @@ function statusChangeCallback(response) {
 	// app know the current login status of the person.
 	// Full docs on the response object can be found in the documentation
 	// for FB.getLoginStatus().
-	if (response.status === 'connected') {		
+	if (response.status === 'connected') {
 		fbconnect();
 	} else if (response.status === 'not_authorized') {
 		// The person is logged into Facebook, but not your app.
-		console.log('Please log '
-				+ 'into this app.');
+		console.log('Please log ' + 'into this app.');
 	} else {
 		// The person is not logged into Facebook, so we're not sure if
 		// they are logged into this app or not.
-		console.log('Please log '
-				+ 'into Facebook.');
+		console.log('Please log ' + 'into Facebook.');
 	}
 }
 
@@ -70,36 +68,37 @@ window.fbAsyncInit = function() {
 // successful. See statusChangeCallback() for when this call is made.
 function fbconnect() {
 	FB.api('/me', function(response) {
-		alert('Successful login for: ' + JSON.stringify(response));	
+		// alert('Successful login for: ' + JSON.stringify(response));
 		$.ajax({
-			url:serverURL+"php/v1/set-session.php",
-			type:'post',
-			data: {userId : response.id},
-			dataType:"json",
-			success: function(data1){
-				if(data1.error){
-					alert('session error');	
-				}else{
-					//window.location=serverHome+"admin/city-master.php";
-					alert(JSON.stringify(data1));
+			url : serverURL + "php/v1/set-session.php",
+			type : 'post',
+			data : {
+				userId : response.id
+			},
+			dataType : "json",
+			success : function(data1) {
+				if (data1.error) {
+					alert('session error');
+				} else {
+					// alert(JSON.stringify(data1));
 				}
-			}	
+			}
 		});
 		$.ajax({
-			url:serverURL+"php/v1/insert_user",
-			type: "post",
-			dataType:"json",
-			data:{
+			url : serverURL + "php/v1/insert_user",
+			type : "post",
+			dataType : "json",
+			data : {
 				fb_user_id : response.id,
 				name : response.name,
 				access_token : "*****"
 			},
-			success:function(data){			
+			success : function(data) {
 				console.log(JSON.stringify(data));
-				window.location="select_image.php";
+				window.location = "select_image.php";
 			},
-			error:function(a,b,c){
-				console.log(JSON.stringify(a));			
+			error : function(a, b, c) {
+				console.log(JSON.stringify(a));
 			}
 		});
 	});
