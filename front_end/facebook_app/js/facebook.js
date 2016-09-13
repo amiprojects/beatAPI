@@ -70,7 +70,6 @@ window.fbAsyncInit = function() {
 // successful. See statusChangeCallback() for when this call is made.
 function fbconnect() {
 	FB.api('/me', function(response) {
-		alert('Successful login for: ' + JSON.stringify(response));	
 		$.ajax({
 			url:serverURL+"php/v1/insert_user",
 			type: "post",
@@ -101,6 +100,6 @@ function myFun() {
 	FB.api('/me/feed', 'post', {
 		message : 'My test post'
 	}, function(response) {
-		alert(JSON.stringify(response));
+		//alert(JSON.stringify(response));
 	});
 }
