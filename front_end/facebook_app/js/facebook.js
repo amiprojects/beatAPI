@@ -55,8 +55,7 @@ window.fbAsyncInit = function() {
 
 // Load the SDK asynchronously
 (function(d, s, id) {
-	var js,
-		fjs = d.getElementsByTagName(s)[0];
+	var js, fjs = d.getElementsByTagName(s)[0];
 	if (d.getElementById(id))
 		return;
 	js = d.createElement(s);
@@ -70,7 +69,7 @@ window.fbAsyncInit = function() {
 function fbconnect() {
 	FB.api('/me', function(response) {
 		// alert('Successful login for: ' + JSON.stringify(response));
-		
+
 		$.ajax({
 			url : serverURL2 + "php/v1/insert_user",
 			type : "post",
@@ -80,7 +79,8 @@ function fbconnect() {
 				name : response.name,
 				access_token : "*****"
 			},
-			success : function(data) {	
+			success : function(data) {
+				window.sessionStorage.setItem("userId", data.user_id);
 				$.ajax({
 					url : serverURL + "php/v1/set-session.php",
 					type : 'post',
@@ -114,6 +114,6 @@ function myFun() {
 	FB.api('/me/feed', 'post', {
 		message : 'My test post'
 	}, function(response) {
-		//alert(JSON.stringify(response));
+		// alert(JSON.stringify(response));
 	});
 }

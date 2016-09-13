@@ -1,11 +1,12 @@
-$(document).ready(function() {});
+$(document).ready(function() {
+});
 
 function readURL(input) {
 	if (input.files && input.files[0]) {
 		var reader = new FileReader();
 
 		reader.onload = function(e) {
-			//alert(e.target.result);
+			// alert(e.target.result);
 			$('#selfImage').attr('src', e.target.result);
 		}
 
@@ -50,7 +51,8 @@ function uploadUserImage() {
 			type : 'post',
 			data : {
 				user_image : $('#selfImage').attr('src').split(",")[1],
-				user_id : $("#userId").val()
+				// user_id : $("#userId").val()
+				user_id : window.sessionStorage.getItem("userId")
 			},
 			dataType : "json",
 			success : function(data) {
