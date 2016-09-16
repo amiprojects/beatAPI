@@ -16,6 +16,7 @@ session_start();
 <script src="js/jquery-1.12.0.min.js"></script>
 <script src="js/jqueryMobile/jquery.mobile-1.4.5.min.js"></script>
 <script src="js/webcam.min.js"></script>
+<script src="js/jquery.facedetection.min.js"></script>
 
 <script src="js/selectImage.js"></script>
 
@@ -23,9 +24,24 @@ session_start();
 body {
 	background-image: url("images/BG_img.png");
 }
+.face {
+    position: absolute;
+    border: 2px solid red;
+}
+
+.se-pre-con {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url(images/ajax-loader.gif) center no-repeat rgba(255, 255, 255, .4);
+}
 </style>
 </head>
 <body>
+<div class="se-pre-con" style="display: none;"></div>
 	<div data-role="page" data-theme="c">
 		<div data-role="header" data-tap-toggle="false">
 			<div
@@ -117,6 +133,5 @@ body {
 <input type='file' id="imgInp" onchange="uploadImage(this)" style="display: none;"/>
 
 <input type="hidden" id="userId" value="<?php echo $_SESSION["userDetails"]["userId"] ?>"/>
-
 </body>
 </html>

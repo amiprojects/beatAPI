@@ -7,9 +7,11 @@ function readURL(input) {
 		reader.onload = function(e) {
 			// alert(e.target.result);
 			$('#selfImage').attr('src', e.target.result);
+			detectFace();
 		}
 
 		reader.readAsDataURL(input.files[0]);
+		
 	}
 }
 
@@ -61,9 +63,51 @@ function uploadUserImage() {
 					window.sessionStorage.setItem("selfImage", data.image_url);
 					window.location = "result.php";
 				}
-			}
+			},
+			error : function(a, b, c) {
+				console.log("Select Image Js says: " + JSON.stringify(a));
+			},
+            progress: function(e) {
+                if(e.lengthComputable) {
+                    var pct = (e.loaded / e.total) * 100;                    
+//                    $('#prog')
+//                        .progressbar('option', 'value', pct)
+//                        .children('.ui-progressbar-value')
+//                        .html(pct.toPrecision(3) + '%')
+//                        .css('display', 'block');
+                } else {
+                    console.warn('Content Length not reported!');
+                }
+            }
 		});
 	} else {
 		alert("Please upload an image.");
 	}
+}
+
+function detectFace() {
+	"use strict";
+	$('.face').remove();
+
+	$('#selfImage').faceDetection({
+		complete : function(faces) {
+			console.log(JSON.stringify(faces));
+
+			for (var i = 0; i < faces.length; i++) {
+				$('<div>', {
+					'class' : 'face',
+					'css' : {
+						'position' : 'absolute',
+						'left' : faces[i].x * faces[i].scaleX + 'px',
+						'top' : faces[i].y * faces[i].scaleY + 'px',
+						'width' : faces[i].width * faces[i].scaleX + 'px',
+						'height' : faces[i].height * faces[i].scaleY + 'px'
+					}
+				}).insertAfter("#selfImage");
+			}
+		},
+		error : function(code, message) {
+			alert('Error: ' + message);
+		}
+	});
 }
