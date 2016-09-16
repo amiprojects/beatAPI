@@ -1,5 +1,8 @@
+var status;
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {
+	status = response.status;
+
 	console.log('statusChangeCallback');
 	console.log(response);
 	// The response object is returned with a status field that lets the
@@ -92,7 +95,7 @@ function fbconnect() {
 						if (data1.error) {
 							alert('session error');
 						} else {
-							window.location = "select_image.php";
+							//window.location = "select_image.php";
 						}
 					}
 				});
