@@ -94,7 +94,7 @@ body {
 				<div
 					style="width: 40%; height: auto; float: left; text-align: center;">
 					
-					<div data-theme="b" data-role="popup" data-dismissible="false" data-position-to="window" id="camera_pop">
+					<div style="max-width: 1336px!important;top: -207.5px !important;left: -103.5px!important;" data-theme="b" data-role="popup" data-dismissible="false" data-position-to="window" id="camera_pop">
 						<div id="my_camera"></div>	
 						<input type="button" value="TAKE A SNAPSHOT" onclick="take_snapshot();">				
 					</div>
