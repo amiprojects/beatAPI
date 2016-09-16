@@ -24,10 +24,12 @@ function upload() {
 }
 
 function uploadCam() {
+	
+	//$("#selfImage").hide();
 	$("#camera_pop").popup("open");
 	Webcam.set({
-		width : 320,
-		height : 240,
+		width : 365,
+		height : 403,
 		image_format : 'jpeg',
 		jpeg_quality : 90
 	});
