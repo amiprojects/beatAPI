@@ -119,13 +119,14 @@ $app->post ( '/insert_hitcounter', function () use ($app) {
 	verifyRequiredParams ( array (
 			'user_id',
 			'left_hit_count',
-			'right_hit_count' 
+			'right_hit_count',
+			'total_hit_count'
 	) );
 	
 	$user_id = $app->request->post ( 'user_id' );
 	$left_hit_count = $app->request->post ( 'left_hit_count' );
 	$right_hit_count = $app->request->post ( 'right_hit_count' );
-	$total_hit_count = $left_hit_count + $right_hit_count;
+	$total_hit_count = $app->request->post ( 'total_hit_count' );
 	
 	$obj = new dboperation ();
 	$hit_counter = new hit_counter ();

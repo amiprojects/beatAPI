@@ -72,7 +72,7 @@ body {
 				<div style="width: 30%; height: 1px; float: left;"></div>
 				<div
 					style="width: 40%; height: 35px; float: left; text-align: center; color: red;">
-					<strong><span id="hitTimer">60</span></strong>
+					<strong><span id="hitTimer">10</span></strong>
 				</div>
 				<div style="width: 30%; height: 1px; float: left;"></div>
 			</div>
