@@ -26,10 +26,31 @@ function timer() {
 	if (count <= 0) {
 		clearInterval(counter);
 		alert("Timed out !");
+		insertHit();
 		// alert(leftHitCount);
 		// alert(rightHitCount);
 		return;
 	}
+}
+
+function insertHit() {
+	$.ajax({
+		url : serverURL2 + "php/v1/insert_hitcounter",
+		type : "post",
+		dataType : "json",
+		data : {
+			user_id : window.sessionStorage.getItem("userId"),
+			left_hit_count : leftHitCount,
+			right_hit_count : rightHitCount,
+			total_hit_count : totalHitCount
+		},
+		success : function(data) {
+			//alert("Inserted Hit Counter");
+		},
+		error : function(a, b, c) {
+			console.log(JSON.stringify(a));
+		}
+	});
 }
 
 $(document).ready(

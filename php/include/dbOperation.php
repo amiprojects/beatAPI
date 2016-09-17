@@ -29,23 +29,20 @@ class dboperation extends DbConnect {
 				$response ["error"] = false;
 				$response ["msg"] = INSERT_SUCCESS;
 				
-				
-				if(($stmt->insert_id)==0){
+				if (($stmt->insert_id) == 0) {
 					$stmt1 = $this->conn->prepare ( "select id from users where facebook_user_id = ?" );
-					$stmt1->bind_param ( "s", $usr->facebook_user_id);
+					$stmt1->bind_param ( "s", $usr->facebook_user_id );
 					$stmt1->execute ();
-					$stmt1->store_result();
+					$stmt1->store_result ();
 					$num_rows = $stmt1->num_rows;
 					if ($num_rows > 0) {
-						$stmt1->bind_result($uid);
+						$stmt1->bind_result ( $uid );
 						$stmt1->fetch ();
 						$response ["user_id"] = $uid;
-					}					
-				}else{
+					}
+				} else {
 					$response ["user_id"] = $stmt->insert_id;
 				}
-				
-				
 			} else {
 				$response ["error"] = true;
 				$response ["msg"] = INSERT_FAILED;
@@ -58,7 +55,6 @@ class dboperation extends DbConnect {
 	}
 	
 	/**
-	 * <<<<<<< HEAD
 	 * Get total number of user
 	 */
 	function getTotalNumberOfUsers() {
@@ -181,6 +177,67 @@ class dboperation extends DbConnect {
 			$response ["msg"] = QUERY_EXCEPTION;
 		}
 		return $response;
+	}
+	/**
+	 * get top ten hitter in last 7 days
+	 */
+	function getTopTenHitter() {
+		$response = array ();
+		$sql = "SELECT id, facebook_user_id, name, access_token FROM users;";
+		$stmt = $this->conn->prepare ( $sql );
+		$temparr = array ();
+		
+		if ($stmt) {
+			if ($stmt->execute ()) {
+				$stmt->store_result ();
+				$stmt->bind_result ( $id, $facebook_user_id, $name, $access_token );
+				$num_rows = $stmt->num_rows;
+				
+				if ($num_rows > 0) {
+					while ( $stmt->fetch () ) {
+						$sql1 = "SELECT MAX(total_hit_count) FROM hit_counter where user_id=?;";
+						$stmt1 = $this->conn->prepare ( $sql1 );
+						$stmt1->bind_param ( "i", $id );
+						$stmt1->execute ();
+						$stmt1->store_result ();
+						$stmt1->bind_result ( $max_hit );
+						$stmt1->fetch ();
+						
+						$usr = new temp ();
+						$usr->id = $id;
+						$usr->name = $name;
+						$usr->max_hit = $max_hit;
+						
+						array_push ( $temparr, $usr );
+					}
+					
+					usort ( $temparr, array (
+							$this,
+							"descCmp" 
+					) );
+					
+					$response ["error"] = false;
+					$response ["msg"] = DATA_FOUND;
+					$response ['user'] = $temparr;
+				} else {
+					$response ["error"] = true;
+					$response ["msg"] = DATA_NOT_FOUND;
+				}
+			} else {
+				$response ["error"] = true;
+				$response ["msg"] = INSERT_FAILED;
+			}
+		} else {
+			$response ["error"] = true;
+			$response ["msg"] = QUERY_EXCEPTION;
+		}
+		return $response;
+	}
+	function descCmp($a, $b) {
+		if ($a->max_hit == $b->max_hit) {
+			return 0;
+		}
+		return ($a->max_hit > $b->max_hit) ? - 1 : 1;
 	}
 }
 ?>

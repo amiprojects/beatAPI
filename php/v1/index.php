@@ -32,7 +32,7 @@ $app->post ( '/test', function () use ($app) {
 	$myArray1 = array ();
 	$myArray2 = array ();
 	
-	$noti_device = new notification_device ();
+	$noti_device = new temp ();
 	$noti_device->id = 1;
 	$noti_device->slug = 'dfsdf';
 	$noti_device->device_id = 'dffsafd';
@@ -120,7 +120,7 @@ $app->post ( '/insert_hitcounter', function () use ($app) {
 			'user_id',
 			'left_hit_count',
 			'right_hit_count',
-			'total_hit_count'
+			'total_hit_count' 
 	) );
 	
 	$user_id = $app->request->post ( 'user_id' );
@@ -151,6 +151,17 @@ $app->post ( '/userImg', function () use ($app) {
 	$user_id = $app->request->post ( 'user_id' );
 	$obj = new dboperation ();
 	$response = $obj->insertUserImage ( $user_image, $user_id );
+	echoRespnse ( 201, $response );
+} );
+/**
+ * get top ten hitter in last 7 days
+ */
+$app->get ( '/top_ten_hitter', function () use ($app) {
+	$response = array ();
+	
+	$obj = new dboperation ();
+	
+	$response = $obj->getTopTenHitter ();
 	echoRespnse ( 201, $response );
 } );
 
