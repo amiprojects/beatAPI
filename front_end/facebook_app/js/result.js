@@ -18,6 +18,10 @@ function totalHitFunction() {
 	}
 }
 
+/*function share_hit(){
+	//alert("hi...");
+}*/
+
 var count = 10;
 var counter = setInterval(timer, 1000);
 function timer() {

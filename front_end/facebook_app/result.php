@@ -22,6 +22,21 @@ body {
 }
 </style>
 </head>
+
+
+<!-- for share function -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.7&appId=189138751495606";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
 <body>
 	<div data-role="page" data-theme="c">
 		<div data-role="header" data-tap-toggle="false">
@@ -152,7 +167,9 @@ body {
 					<!--<div style="width:100%;height:auto;float:left;">-->
 					<div
 						style="width: 50%; height: auto; float: left; background-color: #006ea0; color: white; text-align: center;">
-						<span style="font-size: 3.2vw;">SHARE</span>
+						
+						  <div style="font-size: 3.2vw;" class="fb-share-button" data-href="https://www.assaisolutions.com/beat/front_end/facebook_app/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a style="text-decoration:none;color:white;" class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.assaisolutions.com%2Fbeat%2Ffront_end%2Ffacebook_app%2F&amp;src=sdkpreparse">Share</a></div>
+						  
 					</div>
 					<div
 						style="width: 50%; height: auto; float: left; background-color: #0089c8; color: white; text-align: center;">

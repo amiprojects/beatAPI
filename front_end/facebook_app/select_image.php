@@ -99,7 +99,7 @@ body {
 						<input type="button" value="TAKE A SNAPSHOT" onclick="take_snapshot();">				
 					</div>
 					
-					<img onclick="uploadUserImage();" style="width: 68%;height: 400px;" src="images/upload_img.png" id="selfImage">
+					<img onclick="uploadUserImage();" style="width: 64%;height: 400px;" src="images/upload_img.png" id="selfImage">
 				</div>
 				<div style="width: 30%; height: 1px; float: left;"></div>
 			</div>
