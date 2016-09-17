@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="jquery-1.12.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>   
+<script src="https://cdn.jsdelivr.net/canvas2image/0.1/canvas2image.js"></script>   
+<script src="base64js.min.js"></script>
+<script>
+function testFunction(){
+html2canvas($("#content"), {
+	onrendered: function(canvas) {
+			theCanvas = canvas;
+			//document.body.appendChild(canvas);
+			var img = canvas.toDataURL("image/png");
+			$("#pic").attr("src", img);
+			//send_pic = $("#pic").attr("src").split(',')[1];
+		}
+	});
+}
+</script>
+</head>
+<body>
+<img src="" id="pic"/>
+<div id="content" class="main-div"><h1>hello</h1></div>
+<button type="button" onclick="testFunction();">Click</button>
+</body>
+</html>
