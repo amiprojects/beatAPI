@@ -182,10 +182,12 @@ class dboperation extends DbConnect {
 	 * get top ten hitter in last 7 days
 	 */
 	function getTopTenHitter() {
+		$date = date ( "Y-m-d H:i:s" );
 		$response = array ();
 		$sql = "SELECT id, facebook_user_id, name, access_token FROM users;";
 		$stmt = $this->conn->prepare ( $sql );
 		$temparr = array ();
+		$temparr2 = array ();
 		
 		if ($stmt) {
 			if ($stmt->execute ()) {
@@ -216,9 +218,29 @@ class dboperation extends DbConnect {
 							"descCmp" 
 					) );
 					
+					if (count ( $temparr ) > 10) {
+						for($i = 0; $i < 10; $i ++) {
+							$usr = new temp ();
+							$usr->id = $temparr [$i]->id;
+							$usr->name = $temparr [$i]->name;
+							$usr->max_hit = $temparr [$i]->max_hit;
+							
+							array_push ( $temparr2, $usr );
+						}
+					} else {
+						for($i = 0; $i < count ( $temparr ); $i ++) {
+							$usr = new temp ();
+							$usr->id = $temparr [$i]->id;
+							$usr->name = $temparr [$i]->name;
+							$usr->max_hit = $temparr [$i]->max_hit;
+							
+							array_push ( $temparr2, $usr );
+						}
+					}
+					
 					$response ["error"] = false;
 					$response ["msg"] = DATA_FOUND;
-					$response ['user'] = $temparr;
+					$response ['user'] = $temparr2;
 				} else {
 					$response ["error"] = true;
 					$response ["msg"] = DATA_NOT_FOUND;
