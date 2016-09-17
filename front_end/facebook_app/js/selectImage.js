@@ -24,7 +24,7 @@ function upload() {
 }
 
 function uploadCam() {
-	
+	alert("hi...");
 	//$("#selfImage").hide();
 	$("#camera_pop").popup("open");
 	Webcam.set({
