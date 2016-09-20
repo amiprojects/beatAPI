@@ -22,7 +22,7 @@ function totalHitFunction() {
 	//alert("hi...");
 }*/
 
-var count = 10;
+var count = 15;
 var counter = setInterval(timer, 1000);
 function timer() {
 	count = count - 1;
