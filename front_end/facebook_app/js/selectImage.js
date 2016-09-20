@@ -24,17 +24,28 @@ function upload() {
 }
 
 function uploadCam() {
-	alert("hi...");
-	//$("#selfImage").hide();
-	$("#camera_pop").popup("open");
-	Webcam.set({
-		width : 365,
-		height : 403,
-		image_format : 'jpeg',
-		jpeg_quality : 90
+	
+	navigator.getMedia = ( navigator.getUserMedia || // use the proper vendor prefix
+            navigator.webkitGetUserMedia ||
+            navigator.mozGetUserMedia ||
+            navigator.msGetUserMedia);
+
+	navigator.getMedia({video: true}, function() {
+		// webcam is available
+		$("#camera_pop").popup("open");
+	        Webcam.set({
+		      width : 365,
+		      height : 403,
+		      image_format : 'jpeg',
+		      jpeg_quality : 90
+	        });
+	        Webcam.attach('#my_camera');
+	        $("#camra-upload").attr('onclick', "take_snapshot();");
+	}, function() {
+		// webcam is not available
+		alert("Camera not available! Please connect your camera and try again.");
 	});
-	Webcam.attach('#my_camera');
-	$("#camra-upload").attr('onclick', "take_snapshot();");
+	
 }
 
 function take_snapshot() {
