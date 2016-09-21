@@ -96,11 +96,11 @@ class dboperation extends DbConnect {
 		$response = array ();
 		$date = date ( "Y-m-d H:i:s" );
 		$this->conn->autocommit ( false );
-		$sql = "INSERT INTO hit_counter (user_id, left_hit_count, right_hit_count, total_hit_count, date_time) VALUES (?,?,?,?,?);";
+		$sql = "INSERT INTO hit_counter (user_id,user_image_id, left_hit_count, right_hit_count, total_hit_count, date_time) VALUES (?,?,?,?,?,?);";
 		$stmt = $this->conn->prepare ( $sql );
 		
 		if ($stmt) {
-			$stmt->bind_param ( "iiiis", $ht_counter->user_id, $ht_counter->left_hit_count, $ht_counter->right_hit_count, $ht_counter->total_hit_count, $date );
+			$stmt->bind_param ( "iiiiis", $ht_counter->user_id, $ht_counter->user_image_id, $ht_counter->left_hit_count, $ht_counter->right_hit_count, $ht_counter->total_hit_count, $date );
 			if ($stmt->execute ()) {
 				$this->conn->commit ();
 				
@@ -119,10 +119,12 @@ class dboperation extends DbConnect {
 			} else {
 				$response ["error"] = true;
 				$response ["msg"] = INSERT_FAILED;
+				$response ["msg_details"] = $this->conn->error;
 			}
 		} else {
 			$response ["error"] = true;
 			$response ["msg"] = QUERY_EXCEPTION;
+			$response ["msg_details"] = $this->conn->error;
 		}
 		return $response;
 	}
@@ -159,6 +161,7 @@ class dboperation extends DbConnect {
 						$this->conn->commit ();
 						$response ["error"] = false;
 						$response ["msg"] = INSERT_SUCCESS;
+						$response ["inserted_id"]=$stmt->insert_id;
 						$response ["image_url"] = $imgURL;
 					} else {
 						$response ["error"] = true;

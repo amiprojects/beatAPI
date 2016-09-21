@@ -70,6 +70,7 @@ $app->post ( '/insert_hitcounter', function () use ($app) {
 	
 	verifyRequiredParams ( array (
 			'user_id',
+			'user_image_id',
 			'left_hit_count',
 			'right_hit_count',
 			'total_hit_count' 
@@ -79,9 +80,11 @@ $app->post ( '/insert_hitcounter', function () use ($app) {
 	$left_hit_count = $app->request->post ( 'left_hit_count' );
 	$right_hit_count = $app->request->post ( 'right_hit_count' );
 	$total_hit_count = $app->request->post ( 'total_hit_count' );
+	$user_image_id = $app->request->post ( 'user_image_id' );
 	
 	$obj = new dboperation ();
 	$hit_counter = new hit_counter ();
+	$hit_counter->user_image_id = $user_image_id;
 	$hit_counter->user_id = $user_id;
 	$hit_counter->left_hit_count = $left_hit_count;
 	$hit_counter->right_hit_count = $right_hit_count;

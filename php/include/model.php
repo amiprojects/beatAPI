@@ -8,6 +8,7 @@ class users {
 class hit_counter {
 	public $id;
 	public $user_id;
+	public $user_image_id;
 	public $left_hit_count;
 	public $right_hit_count;
 	public $total_hit_count;
