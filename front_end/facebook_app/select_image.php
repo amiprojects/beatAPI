@@ -86,8 +86,8 @@ body {
 					
 					<img style="width: 300px;" src="images/uploade-image-frame.png" id="selfImage">
                     
-                    <!--<div id="selfImage"
-						style="width: 308px; height: auto; float: left; min-height: 610px; /*background-image: url('images/uploade-image-frame.png');*/ background-repeat: no-repeat;">-->
+                    <div id="selfImage"
+						style="width: 308px; height: auto; float: left; min-height: 610px;display:none; /*background-image: url('images/uploade-image-frame.png');*/ background-repeat: no-repeat;">
                         
 				</div>
 				<div style="width: 30%; height: 1px; float: left;"></div>
