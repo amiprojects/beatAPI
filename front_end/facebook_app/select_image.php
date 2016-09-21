@@ -44,44 +44,29 @@ body {
 <div class="se-pre-con" style="display: none;"></div>
 	<div data-role="page" data-theme="c">
 		<div data-role="header" data-tap-toggle="false">
-			<div
-				style="width: 100%; height: auto; float: left; border-bottom: 1px solid #b3ddf3;">
-				<div style="width: 50%; height: 80px; float: left;">
-					<div style="width: 100%; height: auto; float: left;">
-						<div style="width: 5%; height: 1px; float: left;"></div>
-
-						<div style="width: 95%; height: 1px; float: left;">
-							<img src="images/logo.png">
-						</div>
-
-					</div>
-				</div>
-				<div style="width: 50%; height: 80px; float: left;">
-					<div
-						style="width: 100%; height: auto; float: left; position: relative; top: 25px;">
-						<div style="width: 5%; height: 1px; float: left;"></div>
-						<div
-							style="width: 26.66%; height: auto; float: left; font-family: HelveticaNeue; text-align: center;">
-							<a href=""
-								style="text-decoration: none; color: #008ac8; font-weight: bold; font-size: 13px;">ABOUT</a>
-						</div>
-						<div style="width: 5%; height: 1px; float: left;"></div>
-						<div
-							style="width: 26.66%; height: auto; float: left; font-family: HelveticaNeue; text-align: center;">
-							<a href=""
-								style="text-decoration: none; color: #848484; font-size: 13px;">RESULTS</a>
-						</div>
-						<div style="width: 5%; height: 1px; float: left;"></div>
-						<div
-							style="width: 26.66%; height: auto; float: left; font-family: HelveticaNeue; text-align: center;">
-							<a href=""
-								style="text-decoration: none; color: #848484; font-size: 13px;">LEADERBOARD</a>
-						</div>
-						<div style="width: 5%; height: 1px; float: left;"></div>
-					</div>
-				</div>
-
-			</div>
+            <!--for logo-->
+            <div style="width:100%;height:5px;float:left;"></div>
+            <div style="width:100%;height:auto;float:left;text-align: center;/*border-bottom: 1px solid #e4e4e4;*/border-top: 1px solid #e4e4e4;">
+            	<img style="padding-top: 6px;" src="images/logo.png">
+            </div>
+            
+            <!--for header menu-->
+            <div style="width:100%;height:auto;float:left;border-top: 1px solid #e4e4e4;border-bottom: 1px solid #e4e4e4;padding-top: 15px;padding-bottom: 15px;">
+            	<div style="width:20%;height:1px;float:left;"></div>
+                <div style="width:60%;height:auto;float:left;">
+                	<div style="width:100%;height:auto;float:left;">
+                    	
+                        <div style="width:33.33%;height:auto;float:left;text-align: right;"><span style="font-size:11pt;color:#d16a39;font-family:OpenSans;"><strong>ABOUT</strong></span></div>
+                       
+                        <div style="width:33.33%;height:auto;float:left;text-align: center;"><span style="font-size:11pt;font-family:OpenSans;color:#8c8c8c"><strong>RESULTS</strong></span></div>
+                        
+                        <div style="width:33.33%;height:auto;float:left;text-align: left;"><span style="font-size:11pt;font-family:OpenSans;color:#8c8c8c"><strong>LEADERBOARD</strong></span></div>
+                        
+                    </div>
+                </div>
+                <div style="width:20%;height:1px;float:left;"></div>
+            </div>
+            
 
 		</div>
 
@@ -99,35 +84,56 @@ body {
 						<input type="button" value="TAKE A SNAPSHOT" onclick="take_snapshot();">				
 					</div>
 					
-					<img onclick="uploadUserImage();" style="width: 64%;height: 400px;" src="images/upload_img.png" id="selfImage">
+					<img onclick="uploadUserImage();" style="width: 300px;" src="images/upload_img.png" id="selfImage">
 				</div>
 				<div style="width: 30%; height: 1px; float: left;"></div>
 			</div>
+                        <!--for error msg-->
+                        <div id="error_div" style="width:100%;height:auto;float:left;display:none;">
+                            <div style="width:35%;height:1px;float:left;"></div>
+                            <div style="width:30%;height:auto;float:left;">
+                                <span style="color:red">Camera not available! Please connect your camera and try again.</span>
+                            </div>
+                            <div style="width:35%;height:1px;float:left;"></div>
+                        </div>
 
 			<div
-				style="width: 100%; height: auto; float: left; padding-top: 40px;">
-				<div style="width: 30%; height: 1px; float: left;"></div>
+				style="width: 100%; height: auto; float: left; /*padding-top: 40px;*/">
+				<div style="width: 39%; height: 1px; float: left;"></div>
 				<div
-					style="width: 40%; height: auto; float: left; text-align: center;">
+					style="width: 22%; height: auto; float: left; text-align: center;">
 					<!--<div style="width:100%;height:auto;float:left;">-->
-					<div id="camra-upload"
-						style="width: 48%; height: auto; float: left; background-color: #008bcb;" onclick="uploadCam();">
+					<div id="camra-upload" style="width: 49.5%; height: auto; float: left; background-color: #008bcb;border-right: 2px solid white;" onclick="uploadCam();">
 						<img style="width: 35px; padding-top: 5px;"
 							src="images/take_photo.png">
 					</div>
-					<div style="width: 2%; height: 1px; float: left;"></div>
-					<div
-						style="width: 48%; height: auto; float: left; background-color: #008bcb;" onclick="upload();">
+					<!--<div style="width: 2%; height: 1px; float: left;"></div>-->
+					<div style="width: 49.5%; height: auto; float: left; background-color: #008bcb;" onclick="upload();">
 						 
 						<img style="width: 35px; padding-top: 5px;"
 							src="images/upload.png">
 					</div>
 					<!--</div>-->
 				</div>
-				<div style="width: 30%; height: 1px; float: left;"></div>
+				<div style="width: 39%; height: 1px; float: left;"></div>
 			</div>
 
 			<div style="width: 100%; height: 20px; float: left;"></div>
+
+                        <div style="width:100%;height:auto;float:left;">
+                            <div style="width:43%;height:1px;float:left;"></div>
+                            <div onclick="uploadUserImage();" style="width: 14%;height:auto;float:left;/* background-color: #008bcb; */color: white;text-align: center;">
+                                <div style="width:100%;height:20%;float:left;"></div>
+                                <div style="width: 94%;/* height:60%; */float:left;background-color: #cd5b1c;padding: 3%;/* margin: 0%; */margin-bottom: 20px;">
+                                   <span>Next</span>
+                                </div>
+                                <div style="width:100%;height:20%;float:left;"></div>
+
+                            </div>
+                            <div style="width:43%;height:1px;float:left;"></div>
+                        </div>
+
+
 		</div>
 	</div>
 <input type='file' id="imgInp" onchange="uploadImage(this)" style="display: none;"/>

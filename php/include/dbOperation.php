@@ -183,6 +183,8 @@ class dboperation extends DbConnect {
 	 */
 	function getTopTenHitter() {
 		$date = date ( "Y-m-d H:i:s" );
+		$beforeSevenDays = date ( 'Y-m-d H:i:s', strtotime ( '-7 days' ) );
+		
 		$response = array ();
 		$sql = "SELECT id, facebook_user_id, name, access_token FROM users;";
 		$stmt = $this->conn->prepare ( $sql );
@@ -197,18 +199,24 @@ class dboperation extends DbConnect {
 				
 				if ($num_rows > 0) {
 					while ( $stmt->fetch () ) {
-						$sql1 = "SELECT MAX(total_hit_count) FROM hit_counter where user_id=?;";
+						$sql1 = "SELECT MAX(total_hit_count) FROM hit_counter where user_id=? and date_time>?;";
 						$stmt1 = $this->conn->prepare ( $sql1 );
-						$stmt1->bind_param ( "i", $id );
+						$stmt1->bind_param ( "is", $id, $beforeSevenDays );
 						$stmt1->execute ();
 						$stmt1->store_result ();
 						$stmt1->bind_result ( $max_hit );
+						$num_rows1 = $stmt1->num_rows;
 						$stmt1->fetch ();
 						
 						$usr = new temp ();
 						$usr->id = $id;
 						$usr->name = $name;
-						$usr->max_hit = $max_hit;
+						
+						if ($max_hit != null) {
+							$usr->max_hit = $max_hit;
+						} else {
+							$usr->max_hit = 0;
+						}
 						
 						array_push ( $temparr, $usr );
 					}
