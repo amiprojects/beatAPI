@@ -13,7 +13,7 @@ session_start ();
 <script src="js/url.js"></script>
 <script src="js/jquery-1.12.0.min.js"></script>
 <script src="js/jqueryMobile/jquery.mobile-1.4.5.min.js"></script>
-<script src="js/result.js"></script>
+<script src="js/leaderboard.js"></script>
 
 <style>
 body {

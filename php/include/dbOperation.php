@@ -181,6 +181,7 @@ class dboperation extends DbConnect {
 		}
 		return $response;
 	}
+	
 	/**
 	 * get top ten hitter in last 7 days
 	 */
