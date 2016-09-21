@@ -76,6 +76,7 @@ function uploadUserImage() {
 					window.sessionStorage.setItem("selfImage", data.image_url);
 					window.sessionStorage.setItem("image_inserted_id", data.inserted_id);
 					window.location = "result.php";
+					window.location = "game.html";
 				}
 			},
 			error : function(a, b, c) {
