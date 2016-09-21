@@ -1,0 +1,78 @@
+.overlay{
+  position: relative;
+  top: -389px;
+  left: 0%;
+  width: 100%;
+  /*height:auto;*/
+  z-index: 10;
+}
+@media only screen and (min-width: 200px) {
+.overlay{
+  position: relative;
+  top: -271px;
+  left: 0%;
+  width: 100%;
+  /*height:auto;*/
+  z-index: 10;
+}
+}
+@media only screen and (min-width: 300px) {
+.overlay{
+  position: relative;
+  top:-289px;
+  left: 0%;
+  width: 100%;
+  /*height:auto;*/
+  z-index: 10;
+}
+}
+@media only screen and (min-width: 400px) {
+.overlay{
+  position: relative;
+  top: -361px;
+  left: 0%;
+  width: 100%;
+  /*height:auto;*/
+  z-index: 10;
+}
+}
+@media only screen and (min-width: 500px) {
+.overlay{
+  position: relative;
+  top: -422px;
+  left: 0%;
+  width: 100%;
+  /*height:auto;*/
+  z-index: 10;
+}
+}
+@media only screen and (min-width: 600px) {
+.overlay{
+  position: relative;
+  top: -486px;
+  left: 0%;
+  width: 100%;
+  /*height:auto;*/
+  z-index: 10;
+}
+}
+@media only screen and (min-width: 700px) {
+.overlay{
+  position: relative;
+  top: -627px;
+  left: 0%;
+  width: 100%;
+  /*height:auto;*/
+  z-index: 10;
+}
+}
+@media only screen and (min-width: 800px) {
+.overlay{
+  position: relative;
+  top: -702px;
+  left: 0%;
+  width: 100%;
+  /*height:auto;*/
+  z-index: 10;
+}
+}
