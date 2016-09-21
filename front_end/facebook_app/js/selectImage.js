@@ -7,7 +7,7 @@ function readURL(input) {
 		reader.onload = function(e) {
 			// alert(e.target.result);
 			$('#selfImage').attr('src', e.target.result);
-			detectFace();
+			//detectFace();
 		}
 
 		reader.readAsDataURL(input.files[0]);
