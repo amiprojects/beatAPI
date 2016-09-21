@@ -65,7 +65,18 @@ body {
 
 		<div data-role="main">
 			<div style="width:100%;height:auto;float:left;">
-			    <div style="width:100%;height:auto;float:left;text-align:center;"><img style="width:170px;" src="images/hit_count.png"/></div>
+			    <div style="width:100%;height:auto;float:left;text-align:center;">
+				    <div style="width:30%;height:10px;float:left;"></div>
+				    <div class="hitDiv" style="">
+					    <div style="width:200px;height:auto;float:left;background: url('images/hit_count.png');background-size: 100% 100%;background-repeat: no-repeat;min-height: 200px;">
+							<div style="width:100%;height:auto;float:left;color:#2d98c8;position: relative;top: 78px;left: -5px;">
+							   <div style="width:100%;height:auto;float:left;font-size:25px;">25</div>
+							   <div style="width:100%;height:auto;float:left;font-size:18px;">HITS</div>
+							</div>
+						</div>
+					</div>
+				    <div style="width:30%;height:10px;float:left;"></div>
+				</div>
 			</div>
 			<div style="width:100%;height:auto;float:left;text-align:center;font-size:19px;">
 				 <b>THANK YOU FOR TAKING THE PLEDGE</b>
@@ -78,8 +89,8 @@ body {
 			    <div style="width:100%;height:auto;float:left;text-align:center;color:white;">
 				    <div style="width:25%;height:10px;float:left;"></div>
 				    <div style="width:50%;height:50px;float:left;background-color: #2d98c8;">
-							 <span style="font-size: 12px;">I PLEDGE TO FIGHT DIABETES</span>
-							 <h2 style="margin:0;font-size: 18px;">WITH NEW BEAT</h2>
+							 <span style="font-size: 12px;">I PLEDGE TO FIGHT DIABETES</span><br>
+							 <span style="margin:0;font-size: 18px;"><b>WITH NEW BEAT</b></span>
 					</div>
 					<div style="width:25%;height:10px;float:left;"></div>
 				</div>

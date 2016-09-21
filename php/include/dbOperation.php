@@ -214,6 +214,7 @@ class dboperation extends DbConnect {
 						
 						$usr = new temp ();
 						$usr->id = $id;
+						$usr->facebook_user_id = $facebook_user_id;
 						$usr->name = $name;
 						
 						if ($max_hit != null) {
@@ -234,6 +235,7 @@ class dboperation extends DbConnect {
 						for($i = 0; $i < 10; $i ++) {
 							$usr = new temp ();
 							$usr->id = $temparr [$i]->id;
+							$usr->facebook_user_id = $temparr [$i]->facebook_user_id;
 							$usr->name = $temparr [$i]->name;
 							$usr->max_hit = $temparr [$i]->max_hit;
 							
@@ -243,6 +245,7 @@ class dboperation extends DbConnect {
 						for($i = 0; $i < count ( $temparr ); $i ++) {
 							$usr = new temp ();
 							$usr->id = $temparr [$i]->id;
+							$usr->facebook_user_id = $temparr [$i]->facebook_user_id;
 							$usr->name = $temparr [$i]->name;
 							$usr->max_hit = $temparr [$i]->max_hit;
 							
