@@ -49,5 +49,6 @@ define ( "RIGHT_HIT_COUNT", "Right hit count" );
 define ( "TOTAL_HIT_COUNT", "Total hit count" );
 
 define ( "USER_IMAGE", "user image" );
+define ( "USER_IMAGE_ID", "user image id" );
 
 ?>

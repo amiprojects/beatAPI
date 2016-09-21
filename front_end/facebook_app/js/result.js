@@ -46,7 +46,8 @@ function insertHit() {
 			user_id : window.sessionStorage.getItem("userId"),
 			left_hit_count : leftHitCount,
 			right_hit_count : rightHitCount,
-			total_hit_count : totalHitCount
+			total_hit_count : totalHitCount,
+			user_image_id : window.sessionStorage.getItem("image_inserted_id")
 		},
 		success : function(data) {
 			//alert("Inserted Hit Counter");
@@ -58,7 +59,8 @@ function insertHit() {
 }
 
 $(document).ready(
-		function() {
-			$("#selfImage").attr("src",
-					domain + window.sessionStorage.getItem("selfImage"));
-		});
+	function() {
+		$("#selfImage").attr("src",
+			domain + window.sessionStorage.getItem("selfImage"));
+		
+	});

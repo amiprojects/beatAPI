@@ -71,14 +71,15 @@ function uploadUserImage() {
 			dataType : "json",
 			success : function(data) {
 				if (data.error) {
-					alert(data.msg);
+					console.log(data.msg);
 				} else {
 					window.sessionStorage.setItem("selfImage", data.image_url);
+					window.sessionStorage.setItem("image_inserted_id", data.inserted_id);
 					window.location = "result.php";
 				}
 			},
 			error : function(a, b, c) {
-				console.log("Select Image Js says: " + JSON.stringify(a));
+				alert("Select Image Js says: " + JSON.stringify(a));
 			},
             progress: function(e) {
                 if(e.lengthComputable) {
