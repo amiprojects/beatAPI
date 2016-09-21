@@ -203,12 +203,12 @@ class dboperation extends DbConnect {
 				
 				if ($num_rows > 0) {
 					while ( $stmt->fetch () ) {
-						$sql1 = "SELECT MAX(total_hit_count) FROM hit_counter where user_id=? and date_time>?;";
+						$sql1 = "SELECT MAX(total_hit_count), user_image_id FROM hit_counter where user_id=? and date_time>?;";
 						$stmt1 = $this->conn->prepare ( $sql1 );
 						$stmt1->bind_param ( "is", $id, $beforeSevenDays );
 						$stmt1->execute ();
 						$stmt1->store_result ();
-						$stmt1->bind_result ( $max_hit );
+						$stmt1->bind_result ( $max_hit,$user_image_id );
 						$num_rows1 = $stmt1->num_rows;
 						$stmt1->fetch ();
 						
@@ -222,6 +222,7 @@ class dboperation extends DbConnect {
 						} else {
 							$usr->max_hit = 0;
 						}
+						$usr->user_image_id=$user_image_id;
 						
 						array_push ( $temparr, $usr );
 					}
@@ -236,6 +237,7 @@ class dboperation extends DbConnect {
 							$usr = new temp ();
 							$usr->id = $temparr [$i]->id;
 							$usr->facebook_user_id = $temparr [$i]->facebook_user_id;
+							$usr->user_image_id=$temparr [$i]->user_image_id;
 							$usr->name = $temparr [$i]->name;
 							$usr->max_hit = $temparr [$i]->max_hit;
 							
@@ -246,6 +248,7 @@ class dboperation extends DbConnect {
 							$usr = new temp ();
 							$usr->id = $temparr [$i]->id;
 							$usr->facebook_user_id = $temparr [$i]->facebook_user_id;
+							$usr->user_image_id=$temparr [$i]->user_image_id;
 							$usr->name = $temparr [$i]->name;
 							$usr->max_hit = $temparr [$i]->max_hit;
 							

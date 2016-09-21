@@ -62,8 +62,8 @@ body {
 					<hr style="width: 30%;float: left;height: 2px;margin-top: 13px;background-color: #0089c7;border: none;border-color: #0089c7;">
 				</div>
 				
-				<div style="width: 100%; float: left; padding: 50px 0%; border-bottom: 1px solid #e4e4e4;">
-					<div style="width: 32.33%;float:left;">
+				<div style="width: 100%; float: left; padding: 50px 0%; border-bottom: 1px solid #e4e4e4;" id="top3score">
+					<!--<div style="width: 32.33%;float:left;">
 						<div style="width: 200px;float: left;margin-bottom: 20px;background: url('images/position.png');background-size: 100% 100%;min-height: 200px;min-width: 200px;background-repeat: no-repeat;">
 							<img src="images/1st_batch.png" style="width: 230px;float: left;position: absolute;z-index: 2;top: 24.5%;">
 						</div>
@@ -101,7 +101,7 @@ body {
 								John Lemon
 							</div>
 						</div>
-					</div>
+					</div>-->
 				</div>
 				
 				<div style="width: 100%; float: left; border-bottom: 1px solid #e4e4e4;">
@@ -113,8 +113,8 @@ body {
 					</div>
 				</div>
 				
-				<div style="width: 100%; float: left; border-bottom: 1px solid #e4e4e4;padding-bottom: 10px;">
-					<div style="width: 100%; float: left;">
+				<div style="width: 100%; float: left; border-bottom: 1px solid #e4e4e4;padding-bottom: 10px;" id="top10score">
+					<!--<div style="width: 100%; float: left;">
 						<div style="width: 46%; float: left; padding: 2%; text-align: left; color: #000;text-transform: uppercase;">
 							John Lemon
 						</div>
@@ -161,7 +161,7 @@ body {
 						<div style="width: 46%; float: left; padding: 2%; text-align: right; color: #000;text-transform: uppercase;">
 							566 HITS
 						</div>
-					</div>
+					</div>-->
 				</div>
 				
 			</div>
