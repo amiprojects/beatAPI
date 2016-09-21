@@ -24,7 +24,7 @@ function showLeaderBoardData() {
 				});
 
 				for (var i = 0; i < 3; i++) {
-					item=data.user[0];
+					item=data.user[i];
 					$("#top3score").append(
 						'<div style="width: 32.33%;float:left;">'+
 						'<div style="width: 200px;float: left;margin-bottom: 20px;background: url(\''+domain+'beat/php/assets/' + item.user_image_id + '.jpg\');background-size: 100% 100%;min-height: 200px;min-width: 200px;background-repeat: no-repeat;">'+
