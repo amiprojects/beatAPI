@@ -24,54 +24,6 @@ $app->get ( '/serverdate', function () use ($app) {
 	) );
 } );
 
-// for testing///////////////////////////////////////////////////////////////////
-$app->post ( '/test', function () use ($app) {
-	$response = array ();
-	
-	$myArray = array ();
-	$myArray1 = array ();
-	$myArray2 = array ();
-	
-	$noti_device = new temp ();
-	$noti_device->id = 1;
-	$noti_device->slug = 'dfsdf';
-	$noti_device->device_id = 'dffsafd';
-	$noti_device->isOn = 1;
-	
-	$myArray [0] = $noti_device;
-	$myArray [1] = $noti_device;
-	
-	$myArray1 ["one"] = array (
-			$noti_device 
-	);
-	array_push ( $myArray1 ["one"], $noti_device );
-	$myArray1 ["two"] = array (
-			$noti_device 
-	);
-	array_push ( $myArray1 ["two"], $noti_device );
-	
-	$myArray2 [0] = $myArray1;
-	
-	$response ["noti_dev"] = $noti_device;
-	$response ["my_array"] = $myArray;
-	$response ["my_array1"] = $myArray1;
-	$response ["my_array2"] = $myArray2;
-	echoRespnse ( 201, $response );
-} );
-
-// $app->get ( '/team/:name', function ($name) use ($app) {
-// $a = $app->request->get ( 'name' );
-// $obj = new dboperation ();
-// echoRespnse ( 202, $obj->getTeamByTeamName ( $a ) );
-// } );
-
-// $app->get ( '/team/', function () use ($app) {
-// $a = $app->request->get ( 'name' );
-// $obj = new dboperation ();
-// echoRespnse ( 202, $obj->getTeamByTeamName ( $a ) );
-// } );
-// ///////////////////////////////////////////////////////////////////////////////
-
 /**
  * for data inserting or ignoring into users table
  */
