@@ -16,7 +16,6 @@ session_start ();
 <script src="js/jquery-1.12.0.min.js"></script>
 <script src="js/jqueryMobile/jquery.mobile-1.4.5.min.js"></script>
 <script src="js/score.js"></script>
-<script src="js/score2.js"></script>
 
 <style>
 body {

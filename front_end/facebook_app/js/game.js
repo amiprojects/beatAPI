@@ -11,7 +11,7 @@ function totalHitFunction() {
 		totalHitCount = Number(Number(totalHitCount) + Number(1));
 		$("#totalHit").html(totalHitCount);
 	} else {
-		alert("Timed out !");
+		// alert("Timed out !");
 	}
 }
 
