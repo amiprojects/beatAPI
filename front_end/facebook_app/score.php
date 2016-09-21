@@ -16,7 +16,7 @@ session_start ();
 <script src="js/jquery-1.12.0.min.js"></script>
 <script src="js/jqueryMobile/jquery.mobile-1.4.5.min.js"></script>
 <script src="js/score.js"></script>
-<!--<script src="js/score2.js"></script>-->
+<script src="js/score2.js"></script>
 
 <style>
 body {
@@ -82,7 +82,7 @@ body {
 			<div style="width:100%;height:auto;float:left;text-align:center;font-size:19px;">
 				 <b>THANK YOU FOR TAKING THE PLEDGE</b>
 			</div>
-			<div style="width:95%;height:auto;float:left;text-align:center;font-size:15px;padding: 0px 3%;">
+			<div style="width:50%;height:auto;float:left;text-align:center;font-size:15px;padding: 0px 25%;">
 			    You have scored <span><b><span class="totalHit"></span> hits!</b></span> Download your share your pledge and get your loved ones to join in too. Together, we can beat diabetes step by step.
 			</div>
 			<div style="width:100%;height:20px;float:left;"></div>

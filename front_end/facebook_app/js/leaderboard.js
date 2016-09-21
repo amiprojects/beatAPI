@@ -26,9 +26,9 @@ function showLeaderBoardData() {
 				for (var i = 0; i < 3; i++) {
 					item=data.user[i];
 					$("#top3score").append(
-						'<div style="width: 32.33%;float:left;">'+
-						'<div style="width: 200px;float: left;margin-bottom: 20px;background: url(\''+domain+'beat/php/assets/' + item.user_image_id + '.jpg\');background-size: 100% 100%;min-height: 200px;min-width: 200px;background-repeat: no-repeat;">'+
-							'<img src="images/'+i+'_batch.png" style="width: 230px;float: left;position: absolute;z-index: 2;top: 24.5%;">'+
+						'<div style="width: 31.33%;float:left;padding:0% 1%;">'+
+						'<div style="width: 100%;float: left;margin-bottom: 20px;">'+
+							'<img src="'+domain+'beat/php/assets/' + item.user_image_id + '.jpg" style="width: 90%; border: 1px solid #e4e4e4;margin: 0% 5%;">'+
 						'</div>'+
 						'<div style="width: 100%; float: left;text-align: center;">'+
 							'<div style="width: 100%; float: left;color: #0089c7; font-weight: bold; font-size: 16px; text-transform: uppercase;">'+

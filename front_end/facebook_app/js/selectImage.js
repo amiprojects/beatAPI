@@ -7,6 +7,14 @@ function readURL(input) {
 		reader.onload = function(e) {
 			// alert(e.target.result);
 			$('#selfImage').attr('src', e.target.result);
+			
+			    $("#selfImage").html();
+				//var img_url = domain + window.sessionStorage.getItem("selfImage");
+				$("#selfImage").css({
+					'background-image' : 'url("' + e.target.result + '")',
+					'background-size' : '100% 95%'
+				});
+			
 			//detectFace();
 		}
 
