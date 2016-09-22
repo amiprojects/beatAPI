@@ -1,3 +1,18 @@
+
+.btn-primary{
+	/*width: 40% !important;*/
+    float: left !important;
+    margin: 0px 10px !important;
+	background-color: #2d98c8;
+    color: white;
+}
+.btn-primary:hover{
+	/*width: 40% !important;*/
+    float: left !important;
+    margin: 0px 10px !important;
+	background-color: #026c9a;
+    color: white;
+}
 .hitDiv{
 	width: 16%;
 	float: left;

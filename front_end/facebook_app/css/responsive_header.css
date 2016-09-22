@@ -1,0 +1,85 @@
+@media only screen and (min-width: 470px) and (max-width: 700px) {
+
+.menu_option{
+    font-size: 10pt;
+	width: 29%;
+}
+
+.menu_option_1{
+    font-size: 10pt;
+	width: 42%;
+}
+
+.header_menu_div{
+	padding: 15px 22% 15px 18%;
+}
+
+}
+
+
+@media only screen and (min-width: 400px) and (max-width: 469px) {
+
+.menu_option{
+    font-size: 9pt;
+	width: 30%;
+	letter-spacing:0.5px;
+}
+
+.menu_option_1{
+    font-size: 9pt;
+	width: 40%;
+	letter-spacing:0.5px;
+}
+
+.header_menu_div{
+	width: 68%;
+	padding: 15px 19% 15px 13%;
+}
+
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 399px) {
+
+
+.menu_option{
+    font-size: 8pt;
+	width: 28%;
+	letter-spacing:0.5px;
+}
+
+.menu_option_1{
+    font-size: 8pt;
+	width: 44%;
+	letter-spacing:0.5px;
+}
+
+.header_menu_div{
+	width: 80%;
+	padding: 15px 10%;
+}
+
+}
+
+
+@media only screen and (min-width: 200px) and (max-width: 319px) {
+
+
+.menu_option{
+    font-size: 6.5pt;
+	width: 26%;
+	letter-spacing:0.7px;
+}
+
+.menu_option_1{
+    font-size: 6.5pt;
+	width: 48%;
+	letter-spacing:0.7px;
+}
+
+.header_menu_div{
+	width: 80%;
+	padding: 15px 10%;
+}
+
+}

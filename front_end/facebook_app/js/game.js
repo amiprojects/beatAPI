@@ -1,9 +1,28 @@
 var leftHitCount = 0;
 var rightHitCount = 0;
 var totalHitCount = 0;
+var counter=0;
 
 var counter;
-function totalHitFunction() {
+function totalHitFunction() {	
+	
+//	if(counter==0){
+//		$("#hit-image-frame").attr("src", "images/animated-frame1.png");
+//		counter++;
+//	}else if(counter==1){
+//		$("#hit-image-frame").attr("src", "images/animated-frame2.png");
+//		counter++;
+//	}else if(counter==2){
+//		$("#hit-image-frame").attr("src", "images/animated-frame3.png");
+//		counter++;
+//	}else if(counter==3){
+//		$("#hit-image-frame").attr("src", "images/animated-frame4.png");
+//		counter=0;
+//	}else {
+//		
+//	}
+	
+	
 	if (totalHitCount == 0) {
 		counter = setInterval(timer, 1000);
 	}

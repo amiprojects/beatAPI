@@ -1,0 +1,8 @@
+.clock_cont_div{ width: 60%; float: left; padding: 0% 20%;}
+.clock_part{width:44%;float:left;padding: 0% 28%;}
+.main_clock{width:100%;float:left;zoom: 75%;margin: 10px 0px;}
+.pledge_div{width:50%;float:left;padding: 2% 25%;}
+.pledge_option_div{width:100%;float:left;}
+.pledge_option_1{width:28%;float:left;margin-left:4%; margin-right:2%;}
+.pledge_option_2{width:28%;float:left;margin-left:2%; margin-right:2%;}
+.pledge_option_3{width:28%;float:left;margin-left:2%; margin-right:4%;}

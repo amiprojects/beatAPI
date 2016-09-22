@@ -6,8 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Facebook App</title>
 
-<link rel="stylesheet"
-	href="js/jqueryMobile/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="js/jqueryMobile/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="css/header.css" />
+<link rel="stylesheet" href="css/responsive_header.css" />
+<link rel="stylesheet" href="css/index_style.css" />
+<link rel="stylesheet" href="css/responsive_index.css" />
 <link rel="stylesheet" href="css/flipclock.css">
 
 <script src="js/url.js"></script>
@@ -16,6 +19,7 @@
 <script src="js/flipclock.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/facebook.js"></script>
+<script src="js/change_page.js"></script>
 
 <script type="text/javascript">
 	function addFBbuttonFunction() {
@@ -76,46 +80,30 @@ body {
 			</div>-->
             
             <!--for logo-->
-            <div style="width:100%;height:5px;float:left;"></div>
-            <div style="width:100%;height:auto;float:left;text-align: center;/*border-bottom: 1px solid #e4e4e4;*/border-top: 1px solid #e4e4e4;">
-            	<img style="padding-top: 6px;" src="images/logo.png">
-            </div>
-            
-            <!--for header menu-->
-            <div style="width:100%;height:auto;float:left;border-top: 1px solid #e4e4e4;border-bottom: 1px solid #e4e4e4;padding-top: 15px;padding-bottom: 15px;">
-            	<div style="width:20%;height:1px;float:left;"></div>
-                <div style="width:60%;height:auto;float:left;">
-                	<div style="width:100%;height:auto;float:left;">
-                    	
-                        <div style="width:33.33%;height:auto;float:left;text-align: right;">
-							<a href="index.html" style="text-decoration: none;">
-								<span style="font-size:11pt;color:#d16a39;font-family:OpenSans;">
-									<strong>ABOUT</strong>
-								</span>
-							</a>
-						</div>
-                       
-                        <div style="width:33.33%;height:auto;float:left;text-align: center;"><span style="font-size:11pt;font-family:OpenSans;color:#8c8c8c"><strong>RESULTS</strong></span></div>
-                        
-                        <div style="width:33.33%;height:auto;float:left;text-align: left;">
-							<a href="leaderboard.php" style="text-decoration: none;">
-								<span style="font-size:11pt;font-family:OpenSans;color:#8c8c8c">
-									<strong>LEADERBOARD</strong>
-								</span>
-							</a>
-						</div>
-                        
-                    </div>
-                </div>
-                <div style="width:20%;height:1px;float:left;"></div>
-            </div>
-            
+			<div class="header_div">
+				<img src="images/logo.png" class="header_icon">
+			</div>
+			<!--for header menu-->
+			<div class="header_menu_div">
+				<div class="header_menu">
+					<div style="text-align: right;" class="menu_option activePage">
+						<strong onclick="openAbtPg();">ABOUT</strong>
+					</div>
 
-		</div>
+					<div style="text-align: center;" class="menu_option">
+						<strong>RESULTS</strong>
+					</div>
+
+					<div style="text-align: left;" class="menu_option_1">
+						<strong onclick="openLdrBrdPg();">LEADERBOARD</strong>
+					</div>
+				</div>
+			</div>
+        </div>
 
 
 		<div data-role="main">
-			<div style="width: 100%; height: auto; float: left;">
+			<div class="clock_cont_div">
 
 				<!--<div
 					style="width: 60%; height: auto; float: left; text-align: center; padding: 0% 20%;">
@@ -130,21 +118,15 @@ body {
 					</div>
 				</div>-->
                 
-                <div style="width:20%;height:1px;float:left;"></div>
-                <div style="width:60%;height:auto;float:left;">
-                	<div style="width:100%;height:auto;float:left;">
-                        <div style="width:32%;height:1px;float:left;"></div>
-                        <div style="width:36%;height:auto;float:left;zoom: 75%;">
-                        	<div class="clock" style="margin: 2em;"></div>
-                        </div>                     	
-                        <div style="width:32%;height:1px;float:left;"></div> 
-                    </div>
+                <div class="clock_part">
+                    <div class="main_clock">
+                        <div class="clock styl_clock"></div>
+                    </div> 
                 </div>
-                <div style="width:20%;height:1px;float:left;"></div>
 
 			</div>
 
-			<div style="width:100%;height:auto;float:left;/*padding-top: 5px;*/">
+			<div style="width:100%;height:auto;float:left;/*padding-top: 5px;*/" class="have_div">
            		<div style="width:20%;height:1px;float:left;">             	       	
                 </div>
                 <div style="width:60%;height:auto;float:left;text-align: center;">                	
@@ -220,13 +202,13 @@ of your health. Take the pledge to beat diabetes today.
             </div>
             
             
-            <div style="width:100%;height:auto;float:left;padding-top: 2%;">
-            	<div style="width: 25%; height: 1px; float: left;"></div>
-                <div style="width: 50%; height: auto; float: left;">
-                	<div style="width:100%;height:auto;float:left;">
-                    	<div style="width: 4%; height: 1px; float: left;"></div>
+            <div class="pledge_div">
+            	<!--<div style="width: 25%; height: 1px; float: left;"></div>
+                <div style="width: 50%; height: auto; float: left;">-->
+                	<div class="pledge_option_div">
+                    	<!--<div style="width: 4%; height: 1px; float: left;"></div>-->
                         
-                        <div style="width:28%;height:auto;float:left;">
+                        <div class="pledge_option_1">
                             <div style="width:100px;height:100px;float:left;border:1px solid black;border-radius: 100%;margin: 0% 16%;">
 								<div style="width:100%;height:70%;float:left;text-align:center;">   
 									  <img style="width: 55%;padding: 12px;" src="images/person.png">               	
@@ -241,8 +223,8 @@ of your health. Take the pledge to beat diabetes today.
                             </div>
                         </div>
                         
-                        <div style="width: 4%; height: 1px; float: left;"></div>
-                        <div style="width:28%;height:auto;float:left;">
+                        <!--<div style="width: 4%; height: 1px; float: left;"></div>-->
+                        <div class="pledge_option_2">
                             <div style="width:100px;height:100px;float:left;border:1px solid black;border-radius: 100%;margin: 0% 16%;">
                             	<div style="width:100%;height:70%;float:left;text-align:center;">   
                             	      <img style="width: 55%;padding: 12px;" src="images/punch.png">               	
@@ -256,8 +238,7 @@ of your health. Take the pledge to beat diabetes today.
                             </div>
                         </div>
                         
-                        <div style="width: 4%; height: 1px; float: left;"></div>
-                        <div style="width:28%;height:auto;float:left;">
+                        <div class="pledge_option_3">
                             <div style="width:100px;height:100px;float:left;border:1px solid black;border-radius: 100%;margin: 0% 16%;">
                             	<div style="width:100%;height:70%;float:left;text-align:center;">   
                             	      <img style="width: 55%;padding: 12px;" src="images/share.png">               	
@@ -274,8 +255,8 @@ of your health. Take the pledge to beat diabetes today.
                         <div style="width: 4%; height: 1px; float: left;"></div>                       
                         
                     </div>
-                </div>
-                <div style="width: 25%; height: 1px; float: left;"></div>
+                 <!--</div>
+               <div style="width: 25%; height: 1px; float: left;"></div>-->
             </div>
 
 

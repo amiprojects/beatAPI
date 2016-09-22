@@ -9,12 +9,15 @@ session_start ();
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Facebook App</title>
-<link rel="stylesheet"
-	href="js/jqueryMobile/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="js/jqueryMobile/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="css/header.css" />
+<link rel="stylesheet" href="css/responsive_header.css" />
+
 <script src="js/url.js"></script>
 <script src="js/jquery-1.12.0.min.js"></script>
 <script src="js/jqueryMobile/jquery.mobile-1.4.5.min.js"></script>
 <script src="js/leaderboard.js"></script>
+<script src="js/change_page.js"></script>
 
 <style>
 body {
@@ -29,44 +32,28 @@ body {
 	<div data-role="page" data-theme="c">
 		<div data-role="header" data-tap-toggle="false">
 			<!--for logo-->
-			<div style="width: 100%; height: 5px; float: left;"></div>
-			<div
-				style="width: 100%; height: auto; float: left; text-align: center; /*border-bottom: 1px solid #e4e4e4;*/ border-top: 1px solid #e4e4e4;">
-				<img style="padding-top: 6px;" src="images/logo.png">
+			<div class="header_div">
+				<img src="images/logo.png" class="header_icon">
 			</div>
-
 			<!--for header menu-->
-			<div
-				style="width: 100%; height: auto; float: left; border-top: 1px solid #e4e4e4; border-bottom: 1px solid #e4e4e4; padding-top: 15px; padding-bottom: 15px;">
-				<div style="width: 20%; height: 1px; float: left;"></div>
-				<div style="width: 60%; height: auto; float: left;">
-					<div style="width: 100%; height: auto; float: left;">
+			<div class="header_menu_div">
+				<div class="header_menu">
+					<div style="text-align: right;" class="menu_option">
+						<!--<a href="" style="text-decoration: none; color: #8c8c8c;">-->
+							<strong onclick="openAbtPg();">ABOUT</strong>
+						<!--</a>-->
+					</div>
 
-						<div style="width: 33.33%; height: auto; float: left; text-align: right;">
-							<a href="index.html" style="text-decoration: none;">
-								<span style="font-size: 11pt; color: #8c8c8c; font-family: OpenSans;">
-									<strong>ABOUT</strong>
-								</span>
-							</a>
-						</div>
+					<div style="text-align: center;" class="menu_option">
+						<strong>RESULTS</strong>
+					</div>
 
-						<div style="width: 33.33%; height: auto; float: left; text-align: center;">
-							<span style="font-size: 11pt; font-family: OpenSans; color: #8c8c8c">
-								<strong>RESULTS</strong>
-							</span>
-						</div>
-
-						<div style="width: 33.33%; height: auto; float: left; text-align: left;">
-							<a href="leaderboard.php" style="text-decoration: none;">
-								<span style="font-size: 11pt; font-family: OpenSans; color: #d16a39">
-									<strong>LEADERBOARD</strong>
-								</span>
-							</a>
-						</div>
-
+					<div style="text-align: left;" class="menu_option_1 activePage">
+						<!--<a href="leaderboard.php" style="text-decoration: none;" class="activePage">-->
+							<strong onclick="openLdrBrdPg();">LEADERBOARD</strong>
+						<!--</a>-->
 					</div>
 				</div>
-				<div style="width: 20%; height: 1px; float: left;"></div>
 			</div>
 		</div>
 

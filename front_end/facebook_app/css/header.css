@@ -1,0 +1,9 @@
+.header_div{ width: 100%; height: auto; float: left; text-align: center; border-top: 1px solid #e4e4e4; padding: 5px 0px;}
+.header_icon{ padding-top: 6px; }
+
+.header_menu_div{ width: 60%; height: auto; float: left; border-top: 1px solid #e4e4e4; border-bottom: 1px solid #e4e4e4; padding: 15px 20%;}
+.header_menu{width: 100%; float: left;}
+.menu_option{width: 32%; height: auto; float: left; font-size: 11pt; color: #8c8c8c; font-family: OpenSans;cursor: pointer;}
+.menu_option_1{width: 36%; height: auto; float: left; font-size: 11pt; color: #8c8c8c; font-family: OpenSans;cursor: pointer;}
+
+.activePage{color: #d16a39;}

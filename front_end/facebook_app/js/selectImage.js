@@ -15,11 +15,16 @@ function readURL(input) {
 			// $("#selfImage").html();
 			// var img_url = domain +
 			// window.sessionStorage.getItem("selfImage");
-			$("#selfImage_upload").css({
+			/*$("#selfImage_upload").css({
 				'background-image' : 'url("' + e.target.result + '")',
 				'background-size' : '100% 87%',
 			// 'padding-left': '40%'
-			});
+			});*/
+			
+			$("#selfImage_upload").empty().append('<img style="width: 300px; height: 475px;" src="'+e.target.result+'" id="selfImage">');
+			//$('#selfImage').attr('src', data_uri);
+			$('#selfImage_upload').append('<img src="images/uploade-image-frame-with-face-position.png" style="width: 300px;height: 475px;position: absolute;top:22%;left: 39%;"/>');
+			
 
 			// detectFace();
 		}
@@ -50,14 +55,18 @@ function uploadCam() {
 					},
 					function() {
 						// webcam is available
-						$("#camera_pop").popup("open");
+						//$("#camera_pop").popup("open");
+						$("#selfImage_upload").empty().append('<div id="my_camera"></div>');
 						Webcam.set({
-							width : 365,
-							height : 403,
+							width : 300,
+							height : 480,
+							dest_width: 300,
+							dest_height: 480,
 							image_format : 'jpeg',
 							jpeg_quality : 90
 						});
 						Webcam.attach('#my_camera');
+						$('#my_camera').append('<img src="images/uploade-image-frame-with-face-position.png" style="width: 300px;height: 480px;position: absolute;top: 20%;left: 39%;"/>');
 						$("#camra-upload").attr('onclick', "take_snapshot();");
 					},
 					function() {
@@ -70,7 +79,9 @@ function uploadCam() {
 function take_snapshot() {
 	// take snapshot and get image data
 	Webcam.snap(function(data_uri) {
-		$('#selfImage').attr('src', data_uri);
+		$("#selfImage_upload").empty().append('<img style="width: 300px; height: 475px;" src="'+data_uri+'" id="selfImage">');
+		//$('#selfImage').attr('src', data_uri);
+		$('#selfImage_upload').append('<img src="images/uploade-image-frame-with-face-position.png" style="width: 300px;height: 475px;position: absolute;top:22%;left: 39%;"/>');
 		$("#camera_pop").popup("close");
 		Webcam.reset();
 		$("#camra-upload").attr('onclick', "uploadCam();");
@@ -78,6 +89,8 @@ function take_snapshot() {
 }
 
 function uploadUserImage() {
+	//var img = $("#selfImage_upload").css("background-image");		
+	//if (img!='none') {
 	if ($('#selfImage').attr('src').split(",").length > 1) {
 		$.ajax({
 			url : serverURL2 + "php/v1/userImg",

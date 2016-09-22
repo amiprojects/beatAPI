@@ -3,7 +3,7 @@ $(document).ready(function() {
 	// Instantiate a counter
 	clock = new FlipClock($('.clock'), 0, {
 		clockFace : 'Counter',
-		minimumDigits : 3
+		minimumDigits : 6
 	});
 	getTotalUserCount(clock);
 	count(clock);
