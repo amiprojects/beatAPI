@@ -1,4 +1,5 @@
-$(document).ready(function() {});
+$(document).ready(function() {
+});
 
 function readURL(input) {
 	if (input.files && input.files[0]) {
@@ -6,20 +7,25 @@ function readURL(input) {
 
 		reader.onload = function(e) {
 			// alert(e.target.result);
-			$('#selfImage').attr('src', e.target.result);
-			
-			    $("#selfImage").html();
-				//var img_url = domain + window.sessionStorage.getItem("selfImage");
-				$("#selfImage").css({
-					'background-image' : 'url("' + e.target.result + '")',
-					'background-size' : '100% 95%'
-				});
-			
-			//detectFace();
+			// $('#selfImage').attr('src', e.target.result);
+			$('#selfImage').attr('src',
+					'images/uploade-image-frame-with-face-position.png');
+			$('#selfImage_upload').show();
+
+			// $("#selfImage").html();
+			// var img_url = domain +
+			// window.sessionStorage.getItem("selfImage");
+			$("#selfImage_upload").css({
+				'background-image' : 'url("' + e.target.result + '")',
+				'background-size' : '100% 87%',
+			// 'padding-left': '40%'
+			});
+
+			// detectFace();
 		}
 
 		reader.readAsDataURL(input.files[0]);
-		
+
 	}
 }
 
@@ -32,28 +38,33 @@ function upload() {
 }
 
 function uploadCam() {
-	
-	navigator.getMedia = ( navigator.getUserMedia || // use the proper vendor prefix
-            navigator.webkitGetUserMedia ||
-            navigator.mozGetUserMedia ||
-            navigator.msGetUserMedia);
 
-	navigator.getMedia({video: true}, function() {
-		// webcam is available
-		$("#camera_pop").popup("open");
-	        Webcam.set({
-		      width : 365,
-		      height : 403,
-		      image_format : 'jpeg',
-		      jpeg_quality : 90
-	        });
-	        Webcam.attach('#my_camera');
-	        $("#camra-upload").attr('onclick', "take_snapshot();");
-	}, function() {
-		// webcam is not available
-		alert("Camera not available! Please connect your camera and try again.");
-	});
-	
+	navigator.getMedia = (navigator.getUserMedia || // use the proper vendor
+													// prefix
+	navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
+
+	navigator
+			.getMedia(
+					{
+						video : true
+					},
+					function() {
+						// webcam is available
+						$("#camera_pop").popup("open");
+						Webcam.set({
+							width : 365,
+							height : 403,
+							image_format : 'jpeg',
+							jpeg_quality : 90
+						});
+						Webcam.attach('#my_camera');
+						$("#camra-upload").attr('onclick', "take_snapshot();");
+					},
+					function() {
+						// webcam is not available
+						alert("Camera not available! Please connect your camera and try again.");
+					});
+
 }
 
 function take_snapshot() {
@@ -82,26 +93,27 @@ function uploadUserImage() {
 					console.log(data.msg);
 				} else {
 					window.sessionStorage.setItem("selfImage", data.image_url);
-					window.sessionStorage.setItem("image_inserted_id", data.inserted_id);
-					window.location = "result.php";
+					window.sessionStorage.setItem("image_inserted_id",
+							data.inserted_id);
+					// window.location = "result.php";
 					window.location = "game.html";
 				}
 			},
 			error : function(a, b, c) {
 				alert("Select Image Js says: " + JSON.stringify(a));
 			},
-            progress: function(e) {
-                if(e.lengthComputable) {
-                    var pct = (e.loaded / e.total) * 100;                    
-//                    $('#prog')
-//                        .progressbar('option', 'value', pct)
-//                        .children('.ui-progressbar-value')
-//                        .html(pct.toPrecision(3) + '%')
-//                        .css('display', 'block');
-                } else {
-                    console.warn('Content Length not reported!');
-                }
-            }
+			progress : function(e) {
+				if (e.lengthComputable) {
+					var pct = (e.loaded / e.total) * 100;
+					// $('#prog')
+					// .progressbar('option', 'value', pct)
+					// .children('.ui-progressbar-value')
+					// .html(pct.toPrecision(3) + '%')
+					// .css('display', 'block');
+				} else {
+					console.warn('Content Length not reported!');
+				}
+			}
 		});
 	} else {
 		alert("Please upload an image.");

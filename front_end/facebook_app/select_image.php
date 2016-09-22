@@ -75,22 +75,24 @@ body {
 
 			<div
 				style="width: 100%; height: auto; float: left; padding-top: 40px;">
-				<div style="width: 30%; height: 1px; float: left;"></div>
+				<div style="width: 39%; height: 1px; float: left;"></div>
 				<div
-					style="width: 40%; height: auto; float: left; text-align: center;">
+					style="width: 22%; height: auto; float: left; text-align: center;">
 					
 					<div style="max-width: 1336px!important;top: -207.5px !important;left: -103.5px!important;" data-theme="b" data-role="popup" data-dismissible="false" data-position-to="window" id="camera_pop">
 						<div id="my_camera"></div>	
 						<input type="button" value="TAKE A SNAPSHOT" onclick="take_snapshot();">				
 					</div>
 					
-					<img style="width: 300px;" src="images/uploade-image-frame.png" id="selfImage">
+					
                     
-                    <div id="selfImage"
-						style="width: 308px; height: auto; float: left; min-height: 610px;display:none; /*background-image: url('images/uploade-image-frame.png');*/ background-repeat: no-repeat;">
+                    <div id="selfImage_upload"
+						style="width: 300px; height: auto; float: left; min-height: 610px;/*display:none;*/ /*background-image: url('images/player-image-for-frame.png');*/ background-repeat: no-repeat;">
+                        
+                        <img style="width: 300px;" src="images/uploade-image-frame.png" id="selfImage">
                         
 				</div>
-				<div style="width: 30%; height: 1px; float: left;"></div>
+				<div style="width: 39%; height: 1px; float: left;"></div>
 			</div>
                         <!--for error msg-->
                         <div id="error_div" style="width:100%;height:auto;float:left;display:none;">
@@ -105,7 +107,7 @@ body {
 				style="width: 100%; height: auto; float: left; /*padding-top: 40px;*/">
 				<div style="width: 39%; height: 1px; float: left;"></div>
 				<div
-					style="width: 22%; height: auto; float: left; text-align: center;">
+					style="width: 32%; height: auto; float: left; text-align: center;">
 					<!--<div style="width:100%;height:auto;float:left;">-->
 					<div id="camra-upload" style="width: 49.5%; height: auto; float: left; background-color: #008bcb;border-right: 2px solid white;" onclick="uploadCam();">
 						<img style="width: 35px; padding-top: 5px;"
