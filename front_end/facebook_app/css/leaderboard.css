@@ -10,7 +10,7 @@
 .batchContDiv{width: 100%;float: left;margin-bottom: -70px;margin-left: 20px;z-index: 2;position: relative;}
 .batchIcon{width: 85px; float: right;}
 .eachTopPlayerImageDiv{width: 100%; float: left;text-align: center;}
-.eachTopPlayerImage{width: 84%;}
+.eachTopPlayerImage{width: 84%;height: 200px;}
 .ecahPlayerInfoDiv{width: 100%; float: left;text-align: center;}
 .playerHitInfo{width: 100%; float: left;color: #0089c7; font-weight: bold; font-size: 16px; text-transform: uppercase;}
 .playerInfo{width: 100%;float: left;color: #000;font-size: 15px;text-transform: uppercase;padding-top: 5px;}
