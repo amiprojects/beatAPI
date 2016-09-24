@@ -1,0 +1,112 @@
+.mainDiv{
+	width: 100%; 
+	height: auto; 
+	float: left; 
+	padding-top: 40px;
+}
+.mainFrameImageDiv{
+    width: 28%;
+    float: left;
+    padding: 0% 36%;
+}
+
+.mainFrameImage{
+	width: 300px; 
+	height: 475px;
+}
+
+.mainFrameDiv{
+	width: 300px; 
+	height: auto; 
+	float: left; 
+	/*min-height: 530px;
+	background-repeat: no-repeat;*/
+}
+
+.button_container{
+    width: 28%;
+    float: left;
+    padding: 0% 36%;
+	margin-top: -5px;
+}
+
+.double_btn{
+	width: 100%;
+	float: left;
+}
+
+.camera_btn_div{
+    width: 150px;
+    height: auto;
+    float: left;
+    background-color: #0089c8;
+    text-align: center;
+	cursor: pointer;
+}
+
+.upld_btn_div{
+    width: 150px;
+    height: auto;
+    float: left;
+    background-color: #0377ac;
+    text-align: center;
+	cursor: pointer;
+}
+
+.btn_icon{
+	width: 35px; 
+	padding-top: 5px;
+}
+
+.btn_tag{
+	width: 100%;
+	float: left;
+	text-align: center;
+	color: white;
+	font-size: 12px;
+    font-weight: bold;
+    padding: 0px 0px 6px;
+}
+
+.single_btn{
+	width: 70%;
+    float: left;
+    padding: 10% 15%;
+}
+
+.nxt_btn{
+	width: 94%;
+	float:left;
+	background-color: #cd5b1c;
+	padding: 4% 3% 3%;
+	margin-bottom: 20px;
+	text-align: center;
+	color: white;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.img_frame{
+    width: 298px;
+    height: 475px;
+    position: absolute;
+    top: 21.7%;
+    left: 36%;
+    border: 1px solid #e4e4e4;
+    border-bottom: 0px;
+}
+
+
+/**************/
+.mainDivGap{
+	width: 39%; 
+	height: 1px; 
+	float: left;
+}
+.mainInnerDiv{
+	width: 22%; 
+	height: auto; 
+	float: left; 
+	text-align: center;
+}
+

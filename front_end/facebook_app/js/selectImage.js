@@ -1,5 +1,4 @@
-$(document).ready(function() {
-});
+$(document).ready(function() {});
 
 function readURL(input) {
 	if (input.files && input.files[0]) {
@@ -9,7 +8,7 @@ function readURL(input) {
 			// alert(e.target.result);
 			// $('#selfImage').attr('src', e.target.result);
 			$('#selfImage').attr('src',
-					'images/uploade-image-frame-with-face-position.png');
+				'images/uploade-image-frame-with-face-position.png');
 			$('#selfImage_upload').show();
 
 			// $("#selfImage").html();
@@ -20,13 +19,13 @@ function readURL(input) {
 				'background-size' : '100% 87%',
 			// 'padding-left': '40%'
 			});*/
-			
-			$("#selfImage_upload").empty().append('<img style="width: 300px; height: 475px;" src="'+e.target.result+'" id="selfImage">');
-			//$('#selfImage').attr('src', data_uri);
-			$('#selfImage_upload').append('<img src="images/uploade-image-frame-with-face-position.png" style="width: 300px;height: 475px;position: absolute;top:22%;left: 39%;"/>');
-			
 
-			// detectFace();
+			$("#selfImage_upload").empty().append('<img style="width: 300px; height: 475px;" src="' + e.target.result + '" id="selfImage">');
+			//$('#selfImage').attr('src', data_uri);
+			$('#selfImage_upload').append('<img src="images/uploade-image-frame-with-face-position.png" class="img_frame"/>');
+
+
+		// detectFace();
 		}
 
 		reader.readAsDataURL(input.files[0]);
@@ -39,49 +38,54 @@ function uploadImage(thi) {
 }
 
 function upload() {
+	
+	Webcam.reset();
+	$('#my_camera').append('<img src="images/uploade-image-frame.png" class="mainFrameImage"/>');
+	$("#error_div").hide();
+	
 	$("#imgInp").trigger('click');
 }
 
 function uploadCam() {
-
 	navigator.getMedia = (navigator.getUserMedia || // use the proper vendor
-													// prefix
+	// prefix
 	navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
 
 	navigator
-			.getMedia(
-					{
-						video : true
-					},
-					function() {
-						// webcam is available
-						//$("#camera_pop").popup("open");
-						$("#selfImage_upload").empty().append('<div id="my_camera"></div>');
-						Webcam.set({
-							width : 300,
-							height : 480,
-							dest_width: 300,
-							dest_height: 480,
-							image_format : 'jpeg',
-							jpeg_quality : 90
-						});
-						Webcam.attach('#my_camera');
-						$('#my_camera').append('<img src="images/uploade-image-frame-with-face-position.png" style="width: 300px;height: 480px;position: absolute;top: 20%;left: 39%;"/>');
-						$("#camra-upload").attr('onclick', "take_snapshot();");
-					},
-					function() {
-						// webcam is not available
-						alert("Camera not available! Please connect your camera and try again.");
-					});
+		.getMedia(
+			{
+				video : true
+			},
+			function() {
+				// webcam is available
+				//$("#camera_pop").popup("open");
+				$("#selfImage_upload").empty().append('<div id="my_camera"></div>');
+				Webcam.set({
+					width : 300,
+					height : 480,
+					dest_width : 300,
+					dest_height : 480,
+					image_format : 'png',
+					jpeg_quality : 90
+				});
+				Webcam.attach('#my_camera');
+				$('#my_camera').append('<img src="images/uploade-image-frame-with-face-position.png" class="img_frame"/>');
+				$("#camra-upload").attr('onclick', "take_snapshot();");
+			},
+			function() {
+				// webcam is not available
+				$("#error_div").show();
+                setTimeout(function(){ $("#error_div").hide(); }, 5000);
+			});
 
 }
 
 function take_snapshot() {
 	// take snapshot and get image data
 	Webcam.snap(function(data_uri) {
-		$("#selfImage_upload").empty().append('<img style="width: 300px; height: 475px;" src="'+data_uri+'" id="selfImage">');
+		$("#selfImage_upload").empty().append('<img style="width: 300px; height: 475px;" src="' + data_uri + '" id="selfImage">');
 		//$('#selfImage').attr('src', data_uri);
-		$('#selfImage_upload').append('<img src="images/uploade-image-frame-with-face-position.png" style="width: 300px;height: 475px;position: absolute;top:22%;left: 39%;"/>');
+		$('#selfImage_upload').append('<img src="images/uploade-image-frame-with-face-position.png"  class="img_frame"/>');
 		$("#camera_pop").popup("close");
 		Webcam.reset();
 		$("#camra-upload").attr('onclick', "uploadCam();");
@@ -107,7 +111,7 @@ function uploadUserImage() {
 				} else {
 					window.sessionStorage.setItem("selfImage", data.image_url);
 					window.sessionStorage.setItem("image_inserted_id",
-							data.inserted_id);
+						data.inserted_id);
 					// window.location = "result.php";
 					window.location = "game.html";
 				}
@@ -118,11 +122,11 @@ function uploadUserImage() {
 			progress : function(e) {
 				if (e.lengthComputable) {
 					var pct = (e.loaded / e.total) * 100;
-					// $('#prog')
-					// .progressbar('option', 'value', pct)
-					// .children('.ui-progressbar-value')
-					// .html(pct.toPrecision(3) + '%')
-					// .css('display', 'block');
+				// $('#prog')
+				// .progressbar('option', 'value', pct)
+				// .children('.ui-progressbar-value')
+				// .html(pct.toPrecision(3) + '%')
+				// .css('display', 'block');
 				} else {
 					console.warn('Content Length not reported!');
 				}

@@ -24,6 +24,19 @@ $app->get ( '/serverdate', function () use ($app) {
 	) );
 } );
 
+
+
+//gourab api
+/*get max user score*/
+$app->get ( '/max_score/:id', function ($id) use ($app) {
+	$response = array ();
+	$obj = new dbOperation ();
+	$response = $obj->getMaxScoreByUserId ( $id );
+	echoRespnse ( 201, $response );
+} );
+
+
+
 /**
  * for data inserting or ignoring into users table
  */
@@ -108,6 +121,40 @@ $app->post ( '/userImg', function () use ($app) {
 	$response = $obj->insertUserImage ( $user_image, $user_id );
 	echoRespnse ( 201, $response );
 } );
+
+/**
+ * insert Share image
+ */
+$app->post ( '/shareImg', function () use ($app) {
+	$response = array ();
+	verifyRequiredParams ( array (
+			'image',
+			'user_id' 
+	) );
+	$image = $app->request->post ( 'image' );
+	$user_id = $app->request->post ( 'user_id' );
+	$obj = new dboperation ();
+	$response = $obj->saveShareImage ( $image, $user_id );
+	echoRespnse ( 201, $response );
+} );
+
+/**
+ * save gif
+ */
+$app->post ( '/savegif', function () use ($app) {
+	$response = array ();
+	verifyRequiredParams ( array (
+			'user_image_url',
+			'number_of_hits' 
+	) );
+	
+	$user_image_url = $app->request->post ( 'user_image_url' );
+	$number_of_hits = $app->request->post ( 'number_of_hits' );
+	
+	$obj = new dboperation ();
+	$response = $obj->saveGIF ( $user_image_url, $number_of_hits );
+	echoRespnse ( 201, $response );
+} );
 /**
  * get top ten hitter in last 7 days
  */
@@ -120,6 +167,17 @@ $app->get ( '/top_ten_hitter', function () use ($app) {
 	echoRespnse ( 201, $response );
 } );
 
+/**
+ * get frame iamges
+ */
+$app->get ( '/frame_images', function () use ($app) {
+	$response = array ();
+	
+	$obj = new dboperation ();
+	
+	$response = $obj->getFrameImages ();
+	echoRespnse ( 201, $response );
+} );
 /**
  * Verifying required params posted or not
  */

@@ -1,0 +1,143 @@
+@media only screen and (min-width: 1057px) and (max-width: 1090px) {
+
+.shrDwnldBtnDiv{
+	width: 25%;
+    padding: 20px 37.5%;
+}
+
+}
+
+
+
+
+@media only screen and (min-width: 960px) and (max-width: 1056px) {
+
+.imgTitleDiv {
+    width: 32%;
+    padding: 0% 34%;
+}
+
+.imageFrameDiv {
+    width: 32%;
+    padding: 0% 34%;
+}
+
+.shrDwnldBtnDiv {
+	width: 28%;
+    padding: 20px 35% 20px 37%;
+}
+
+.topImageDiv{
+	padding: 0% 28% 0% 26%;
+}
+
+}
+
+
+
+
+@media only screen and (min-width: 895px) and (max-width: 959px) {
+
+.imgTitleDiv {
+    width: 35%;
+    padding: 0% 33.5%;
+}
+
+.imageFrameDiv {
+    width: 35%;
+    padding: 0% 33.5%;
+}
+
+.shrDwnldBtnDiv{
+	width: 28%;
+    padding: 20px 35% 20px 37%;
+}
+
+.shareBtn{
+	width: 120px;
+}
+
+.downloadBtn {
+    width: 120px;
+}
+
+}
+
+
+
+
+@media only screen and (min-width: 825px) and (max-width: 894px) {
+
+.hitDiv {
+    width: 52%;
+	padding: 0% 25% 0% 23%;
+}
+
+.imgTitleDiv {
+    width: 37%;
+    padding: 0% 31.5%;
+}
+
+.imageFrameDiv{
+    width: 37%;
+    padding: 0% 31.5%;
+}
+
+.shrDwnldBtnDiv{
+	width: 32%;
+    padding: 20px 34%;
+}
+
+}
+
+
+@media only screen and (min-width: 745px) and (max-width: 824px) {
+
+.hitDiv {
+    width: 56%;
+    padding: 0% 24% 0% 20%;
+}
+
+.imageFrameDiv{
+	width: 42%;
+    padding: 0% 29%;
+}
+
+.imgTitleDiv{
+	width: 42%;
+    padding: 0% 29%;
+}
+
+.shrDwnldBtnDiv{
+    width: 36%;
+    padding: 20px 32%;
+}
+
+}
+
+
+@media only screen and (min-width: 660px) and (max-width: 744px) {
+
+
+.hitDiv {
+	width: 66%;
+    padding: 0% 18% 0% 16%;
+}
+
+.imageFrameDiv{
+    width: 47%;
+    padding: 0% 26.5%;
+}
+
+.imgTitleDiv{
+    width: 47%;
+    padding: 0% 26.5%;
+}
+
+.shrDwnldBtnDiv{
+    width: 40%;
+    padding: 20px 29.5%;
+}
+
+
+}

@@ -1,0 +1,59 @@
+.pageMainDiv{
+    width: 29%;
+    float: left;
+    padding: 2% 35.5%;
+}
+
+.pageImageDiv{
+	width: 100%;
+	float: left; 
+	text-align: center; 
+	/*position: relative; 
+	display: inline;*/
+}
+
+.playerBGimage{
+	width: 308px;
+	height: auto; 
+	float: left; 
+	min-height: 475px; /*background-image: url('images/player-image-for-frame.png');*/ 
+	background-repeat: no-repeat;
+}
+
+.changebleFrame{
+	bottom: 0; 
+	right: 4px;
+}
+
+.hitNcountDiv{
+	width: 308px;
+	height: auto; 
+	float: left; 
+	margin-top: -80px;
+}
+
+.hitImageDiv{
+    width: 71%;
+    float: left;
+    text-align: center;
+    padding-left: 46px;
+}
+
+.hitImage{
+    width: 100px;
+	cursor: pointer;
+   /* top: 87%;
+    position: absolute;
+    left: 45.5%;*/
+}
+
+.timeCounter{
+    width: 6%;
+    float: left;
+    text-align: center;
+    color: white;
+    padding-top: 39px;
+    /*position: absolute;
+    top: 92.1%;
+    left: 60.2%;*/
+}

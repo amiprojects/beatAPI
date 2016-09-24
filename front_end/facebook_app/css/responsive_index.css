@@ -273,6 +273,10 @@
 	width: 92% !important;
 }
 
+.pledge_option_img_div{
+	margin: 0% 0%;
+}
+
 }
 
 @media only screen and (min-width: 801px) and (max-width: 900px) {

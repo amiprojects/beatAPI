@@ -1,0 +1,164 @@
+.topImageDiv{
+	width: 46%;
+    height: auto;
+    float: left;
+    padding: 0% 27%;
+    text-align: center;
+}
+
+.hitDiv{
+    width: 44%;
+    float: left;
+    padding: 0% 28%;
+}
+
+.hitCountBGimg{
+	width:200px;
+	float:left;
+	background: url('../images/hit_count.png');
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	min-height: 200px;	
+}
+
+.hitCountTagDiv{
+	width:100%;
+	float:left;
+	color:#2d98c8;
+	position: relative;
+	top: 78px;
+	left: -5px;
+}
+
+.hitNo{
+	width:100%;
+	float:left;
+	font-size:25px;
+}
+
+.hitTag{
+	width:100%;
+	float:left;
+	font-size:18px;
+}
+
+.hitPageTitle{
+	width:100%;
+	float:left;
+	text-align:center;
+	font-size: 20px;
+    padding-bottom: 10px;
+}
+
+.hitPageDesc{
+	width:50%;
+	height:auto;
+	float:left;
+	text-align:center;
+	font-size:15px;
+    padding: 0px 25% 20px;
+}
+
+.pageContDiv{
+	width:100%;
+	float:left;
+}
+
+.imageContDiv{
+	width:100%;
+	float:left;
+	text-align:center;
+	color:white;
+}
+
+.imgTitleDiv{
+	width:30%;
+	float:left;
+	text-align:center;
+	color:white;
+	padding: 0% 35%;
+}
+
+.mainTitleDiv{
+	width: 310px;
+	height: 50px;
+	float: left;
+	background-color: #2d98c8;
+	min-width: 302px;
+	max-width: 400px;
+}
+
+.imageFrameDiv{
+	width:30%;
+	float:left;
+	padding: 0% 35%;
+}
+
+.bgScoreImageDiv{
+	width: 310px;
+	background: url(images/result-player-image.png);
+	background-size: 310px 100%;
+	min-height: 200px;
+	min-width:302px;
+	background-repeat:no-repeat;
+	max-width: 400px;
+	height: 482px;
+}
+
+.scoreFrame{
+	width: 308px; 
+	min-height: 302px;
+	max-width: 400px;
+}
+
+.shrDwnldBtnDiv{
+    width: 26%;
+    float: left;
+    padding: 20px 37%;
+    text-align: center;
+}
+
+.shareBtn{
+    width: 130px;
+	float: left;
+	background-color: #0089c8;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	font-size: 16px;
+	padding: 10px 0px;
+	cursor: pointer;
+}
+
+.downloadBtn{
+    width: 130px;
+	float: left;
+	background-color: #0377ac;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	font-size: 16px;
+	padding: 10px 0px;
+	cursor: pointer;
+}
+
+.whenNotPlayedDiv{
+	display: none;
+	width: 100%;
+	float: left;
+	text-align: center;
+	font-size: 16px;
+	color: red;
+	padding: 0px 0px 30px;
+}
+
+.startPlayBtn{
+	width: 80px;
+	background-color: #0377ac;
+	color: white;
+	font-weight: bold;
+	padding: 10px;
+	cursor: pointer;
+}
+
+

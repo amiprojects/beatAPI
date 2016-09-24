@@ -1,0 +1,63 @@
+
+@media only screen and (min-width: 955px) and (max-width: 1050px) {
+
+.pageMainDiv {
+	width: 33%;
+    padding: 2% 33.5%;
+}
+
+
+
+}
+
+
+
+
+@media only screen and (min-width: 891px) and (max-width: 954px) {
+
+.pageMainDiv {
+    width: 35%;
+    padding: 2% 32.5%;
+}
+
+
+
+}
+
+
+
+
+@media only screen and (min-width: 830px) and (max-width: 890px) {
+
+.pageMainDiv {
+    width: 36%;
+    padding: 2% 32%;
+}
+
+
+
+}
+
+
+@media only screen and (min-width: 735px) and (max-width: 829px) {
+
+.pageMainDiv {
+    width: 39%;
+    padding: 2% 30.5%;
+}
+
+
+
+}
+
+
+@media only screen and (min-width: 650px) and (max-width: 734px) {
+
+
+.pageMainDiv {
+    width: 46%;
+    padding: 2% 27%;
+}
+
+
+}

@@ -12,6 +12,7 @@ session_start ();
 <link rel="stylesheet" href="js/jqueryMobile/jquery.mobile-1.4.5.min.css" />
 <link rel="stylesheet" href="css/header.css" />
 <link rel="stylesheet" href="css/responsive_header.css" />
+<link rel="stylesheet" href="css/leaderboard.css" />
 
 <script src="js/url.js"></script>
 <script src="js/jquery-1.12.0.min.js"></script>
@@ -39,19 +40,15 @@ body {
 			<div class="header_menu_div">
 				<div class="header_menu">
 					<div style="text-align: right;" class="menu_option">
-						<!--<a href="" style="text-decoration: none; color: #8c8c8c;">-->
-							<strong onclick="openAbtPg();">ABOUT</strong>
-						<!--</a>-->
+						<strong onclick="openAbtPg();">ABOUT</strong>
 					</div>
 
 					<div style="text-align: center;" class="menu_option">
-						<strong>RESULTS</strong>
+						<strong onclick="openResultPg();">RESULTS</strong>
 					</div>
 
 					<div style="text-align: left;" class="menu_option_1 activePage">
-						<!--<a href="leaderboard.php" style="text-decoration: none;" class="activePage">-->
-							<strong onclick="openLdrBrdPg();">LEADERBOARD</strong>
-						<!--</a>-->
+						<strong onclick="openLdrBrdPg();">LEADERBOARD</strong>
 					</div>
 				</div>
 			</div>
@@ -59,59 +56,77 @@ body {
 
 
 		<div data-role="main">
-			<div style="width: 64%; float: left; padding: 30px 18%;">
-				<div style="width: 100%; float: left;">
-					<hr
-						style="width: 30%; float: left; height: 2px; margin-top: 13px; background-color: #0089c7; border: none; border-color: #0089c7;">
-					<div
-						style="width: 40%; float: left; text-align: center; color: #0089c7; font-weight: bold; font-size: 2vw;">
-						WEEKLY LEADERBOARD</div>
-					<hr
-						style="width: 30%; float: left; height: 2px; margin-top: 13px; background-color: #0089c7; border: none; border-color: #0089c7;">
+			<div class="leaderboardHeadlineDiv">
+				<div class="leaderboardHeadline">
+					<hr class="hrLeft">
+					<div class="headLine">
+						WEEKLY LEADERBOARD
+					</div>
+					<hr class="hrRight">
 				</div>
 
-				<div
-					style="width: 100%; float: left; padding: 50px 0%; border-bottom: 1px solid #e4e4e4;"
-					id="top3score">
-					<!--<div style="width: 32.33%;float:left;">
-						<div style="width: 200px;float: left;margin-bottom: 20px;background: url('images/position.png');background-size: 100% 100%;min-height: 200px;min-width: 200px;background-repeat: no-repeat;">
-							<img src="images/1st_batch.png" style="width: 230px;float: left;position: absolute;z-index: 2;top: 24.5%;">
+				<div id="top3score" class="topPlayersDiv">
+					<!--<div class="ecahPlayerDiv">
+						<div class="ecahPlayerImageDiv">
+							<div class="batchContDiv">
+								<img src="images/0_b.png" class="batchIcon">
+							</div>
+							<div class="eachTopPlayerImageDiv">
+								<img src="images/position.png" class="eachTopPlayerImage">
+							</div>
 						</div>
-						<div style="width: 100%; float: left;text-align: center;">
-							<div style="width: 100%; float: left;color: #0089c7; font-weight: bold; font-size: 16px; text-transform: uppercase;">
+
+						<div class="ecahPlayerInfoDiv">
+							<div class="playerHitInfo">
 								678 HITS
 							</div>
-							<div style="width: 100%;float: left;color: #000;font-size: 15px;text-transform: uppercase;padding-top: 5px;">
+							<div class="playerInfo">
 								John Lemon
 							</div>
 						</div>
 					</div>
-					<div style="width: 31.33%;float:left;padding:0% 1%;">
-						<div style="width: 100%;float: left;margin-bottom: 20px;">
-							<img src="images/position.png" style="width: 90%; border: 1px solid #e4e4e4;margin: 0% 5%;">
+					
+					<div class="ecahPlayerDiv">
+						<div class="ecahPlayerImageDiv">
+							<div class="batchContDiv">
+								<img src="images/1_b.png" class="batchIcon">
+							</div>
+							<div class="eachTopPlayerImageDiv">
+								<img src="images/position.png" class="eachTopPlayerImage">
+							</div>
 						</div>
-						<div style="width: 100%; float: left;text-align: center;">
-							<div style="width: 100%; float: left;color: #0089c7; font-weight: bold; font-size: 16px; text-transform: uppercase;">
+
+						<div class="ecahPlayerInfoDiv">
+							<div class="playerHitInfo">
 								678 HITS
 							</div>
-							<div style="width: 100%;float: left;color: #000;font-size: 15px;text-transform: uppercase;padding-top: 5px;">
+							<div class="playerInfo">
 								John Lemon
 							</div>
 						</div>
 					</div>
-					<div style="width: 31.33%;float:left;padding:0% 1%;">
-						<div style="width: 100%;float: left;margin-bottom: 20px;">
-							<img src="images/position.png" style="width: 90%; border: 1px solid #e4e4e4;margin: 0% 0% 0% 10%;">
+					
+					<div class="ecahPlayerDiv">
+						<div class="ecahPlayerImageDiv">
+							<div class="batchContDiv">
+								<img src="images/2_b.png" class="batchIcon">
+							</div>
+							<div class="eachTopPlayerImageDiv">
+								<img src="images/position.png" class="eachTopPlayerImage">
+							</div>
 						</div>
-						<div style="width: 100%; float: left;text-align: center;">
-							<div style="width: 100%; float: left;color: #0089c7; font-weight: bold; font-size: 16px; text-transform: uppercase;">
+
+						<div class="ecahPlayerInfoDiv">
+							<div class="playerHitInfo">
 								678 HITS
 							</div>
-							<div style="width: 100%;float: left;color: #000;font-size: 15px;text-transform: uppercase;padding-top: 5px;">
+							<div class="playerInfo">
 								John Lemon
 							</div>
 						</div>
 					</div>-->
+					
+					
 				</div>
 
 				<div

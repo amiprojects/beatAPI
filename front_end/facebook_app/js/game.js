@@ -3,24 +3,23 @@ var rightHitCount = 0;
 var totalHitCount = 0;
 var counter=0;
 
-var counter;
+var hcounter=0;
 function totalHitFunction() {	
-	
-//	if(counter==0){
-//		$("#hit-image-frame").attr("src", "images/animated-frame1.png");
-//		counter++;
-//	}else if(counter==1){
-//		$("#hit-image-frame").attr("src", "images/animated-frame2.png");
-//		counter++;
-//	}else if(counter==2){
-//		$("#hit-image-frame").attr("src", "images/animated-frame3.png");
-//		counter++;
-//	}else if(counter==3){
-//		$("#hit-image-frame").attr("src", "images/animated-frame4.png");
-//		counter=0;
-//	}else {
-//		
-//	}
+	if(hcounter==0){
+		$("#hit-image-frame").attr("src", "data:image/jpeg;base64,"+window.localStorage.getItem("frame1"));
+		hcounter++;
+	}else if(hcounter==1){
+		$("#hit-image-frame").attr("src", "data:image/jpeg;base64,"+window.localStorage.getItem("frame2"));
+		hcounter++;
+	}else if(hcounter==2){
+		$("#hit-image-frame").attr("src", "data:image/jpeg;base64,"+window.localStorage.getItem("frame3"));
+		hcounter++;
+	}else if(hcounter==3){
+		$("#hit-image-frame").attr("src", "data:image/jpeg;base64,"+window.localStorage.getItem("frame4"));
+		hcounter=0;
+	}else {
+		
+	}
 	
 	
 	if (totalHitCount == 0) {

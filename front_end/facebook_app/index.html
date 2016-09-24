@@ -26,7 +26,21 @@
 		if (status != "connected") {
 			FB.login();
 		} else {
-			window.location = "select_image.php";
+			$.ajax({
+				url : serverURL2 + "php/v1/frame_images",					
+				dataType : "json",
+				success : function(data3) {
+					if (data3.error) {
+						console.error('Error in fetching frame images.');
+					} else {
+						window.localStorage.setItem("frame1", data3.frame1);
+						window.localStorage.setItem("frame2", data3.frame2);
+						window.localStorage.setItem("frame3", data3.frame3);
+						window.localStorage.setItem("frame4", data3.frame4);
+						window.location = "select_image.php";
+					}
+				}
+			});			
 		}
 	}
 </script>
@@ -91,7 +105,7 @@ body {
 					</div>
 
 					<div style="text-align: center;" class="menu_option">
-						<strong>RESULTS</strong>
+						<strong onclick="openResultPg();">RESULTS</strong>
 					</div>
 
 					<div style="text-align: left;" class="menu_option_1">
@@ -176,7 +190,7 @@ body {
 				<div
 					style="width: 60%; height: auto; float: left; text-align: center;">
 					<div style="width: 100%; height: auto; float: left;">
-						<p style="text-align: justify;font-size:1.5vw;">Diabetes affects 1 in 9 Singapore residents aged 18 – 69. 
+						<p style="text-align: justify;font-size:1.5vw;font-family:OpenSans;">Diabetes affects 1 in 9 Singapore residents aged 18 – 69. 
 It is a chronic medical condition that can lead to serious complications like kidney failure, blindness, and stroke. Beat diabetes by <strong>being aware</strong> of potential risks, <strong>eating right</strong>, adopting an <strong>active lifestyle</strong>, and <strong>taking control</strong> 
 of your health. Take the pledge to beat diabetes today.
 						</p>
@@ -209,50 +223,50 @@ of your health. Take the pledge to beat diabetes today.
                     	<!--<div style="width: 4%; height: 1px; float: left;"></div>-->
                         
                         <div class="pledge_option_1">
-                            <div style="width:100px;height:100px;float:left;border:1px solid black;border-radius: 100%;margin: 0% 16%;">
-								<div style="width:100%;height:70%;float:left;text-align:center;">   
-									  <img style="width: 55%;padding: 12px;" src="images/person.png">               	
+                            <div class="pledge_option_img_div">
+								<div class="pledge_option_img_part">   
+									  <img src="images/person.png" class="pledge_option_img" />               	
 								</div>
-								<div style="width:100%;height:30%;float:left;text-align:center;"> 
-									<span style="color:#0089c7;padding-bottom:5px;font-size:1.5vw;">PHOTO</span>                       	
+								<div class="pledge_option_tag"> 
+									PHOTO                     	
 								</div>
                             </div>
                             
-                        	<div style="width:100%;height:auto;float:left;text-align: center;padding-top: 5%;">
-                            	<span style="font-family:Times New Roman;font-weight: lighter;">Position your face in the frame <strong>or</strong> upload a photo.</span>
+                        	<div class="pledge_option_desc">
+                            	Position your face in the frame <strong>or</strong> upload a photo.
                             </div>
                         </div>
                         
                         <!--<div style="width: 4%; height: 1px; float: left;"></div>-->
                         <div class="pledge_option_2">
-                            <div style="width:100px;height:100px;float:left;border:1px solid black;border-radius: 100%;margin: 0% 16%;">
-                            	<div style="width:100%;height:70%;float:left;text-align:center;">   
-                            	      <img style="width: 55%;padding: 12px;" src="images/punch.png">               	
+                            <div class="pledge_option_img_div">
+                            	<div class="pledge_option_img_part">   
+                            	      <img src="images/punch.png" class="pledge_option_img" />               	
                         		</div>
-                           		<div style="width:100%;height:30%;float:left;text-align:center;"> 
-                            		<span style="color:#0089c7;padding-bottom:5px;font-size:1.5vw;">HIT</span>                       	
+                           		<div class="pledge_option_tag"> 
+                            		HIT                     	
                         		</div>
                             </div>
-                        	<div style="width:100%;height:auto;float:left;text-align: center;padding-top: 5%;">
-                            	<span style="font-family:Times New Roman;font-weight: lighter;">Score as many hits as you can. You have <strong>15 seconds</strong>.</span>
+                        	<div class="pledge_option_desc">
+                            	Score as many hits as you can. You have <strong>15 seconds</strong>.
                             </div>
                         </div>
                         
                         <div class="pledge_option_3">
-                            <div style="width:100px;height:100px;float:left;border:1px solid black;border-radius: 100%;margin: 0% 16%;">
-                            	<div style="width:100%;height:70%;float:left;text-align:center;">   
-                            	      <img style="width: 55%;padding: 12px;" src="images/share.png">               	
+                            <div class="pledge_option_img_div">
+                            	<div class="pledge_option_img_part">   
+                            	      <img src="images/share.png"  class="pledge_option_img" >               	
                         		</div>
-                           		<div style="width:100%;height:30%;float:left;text-align:center;"> 
-                            		<span style="color:#0089c7;padding-bottom:5px;font-size:1.5vw;">SHARE</span>                       	
+                           		<div class="pledge_option_tag"> 
+                            		SHARE                      	
                         		</div>
                             </div>
-                        	<div style="width:100%;height:auto;float:left;text-align: center;padding-top: 5%;">
-                            	<span style="font-family:Times New Roman;font-weight: lighter;">Share or download your pledge.</span>
+                        	<div class="pledge_option_desc">
+                            	Share or download your pledge.
                             </div>
                         </div>
                         
-                        <div style="width: 4%; height: 1px; float: left;"></div>                       
+                        <!--<div style="width: 4%; height: 1px; float: left;"></div> -->                      
                         
                     </div>
                  <!--</div>
@@ -260,25 +274,20 @@ of your health. Take the pledge to beat diabetes today.
             </div>
 
 
-			<div style="width: 100%; height: auto; float: left;
-    padding-top: 3%;">
-				<div style="width: 35%; height: 1px; float: left;"></div>
-				<div
-					style="width: 30%; height: auto; float: left; text-align: center;">
-					<div style="width: 100%; height: auto; float: left;">
-						<span style="width: 100%; height: 5px; float: left;"></span>
+			<div class="button_div">
+				<!--<div style="width: 35%; height: 1px; float: left;"></div>
+				<div style="width: 30%; height: auto; float: left; text-align: center;">-->
+					<div style="" class="button_part">
+						<!--<span style="width: 100%; height: 5px; float: left;"></span>-->
 
-						<button
-							style="width: 100%; height: auto; float: left; background-color: #cd5b1c; color: white;"
-							type="button" onclick="addFBbuttonFunction();">COUNT ME
-							IN</button>
+						<button class="btn_cls" type="button" onclick="addFBbuttonFunction();">COUNT ME IN</button>
 
 						<!-- <div id="FBbutton">
 							<fb:login-button size="large" scope="public_profile,email"
 								onlogin="checkLoginState();">COUNT ME IN</fb:login-button>
 						</div> -->
 
-						<span style="width: 100%; height: 5px; float: left;"></span>
+						<!--<span style="width: 100%; height: 5px; float: left;"></span>-->
 					</div>
 
 					<!-- <div
@@ -290,8 +299,8 @@ of your health. Take the pledge to beat diabetes today.
 						<span style="width: 100%; height: 5px; float: left;"></span>
 					</div> -->
 
-				</div>
-				<div style="width: 35%; height: 1px; float: left;"></div>
+				<!--</div>
+				<div style="width: 35%; height: 1px; float: left;"></div>-->
 			</div>
 
 			<div style="width: 35%; height: 60px; float: left;"></div>

@@ -11,7 +11,8 @@ function showLeaderBoardData() {
 			if (data.error) {
 
 			} else {
-				$.map(data.user, function(item) {
+				
+				/*$.map(data.user, function(item) {
 					$("#top10score").append(
 						'<div style="width: 100%; float: left;">' +
 						'<div style="width: 46%; float: left; padding: 2%; text-align: left; color: #000;text-transform: uppercase;">' +
@@ -21,12 +22,47 @@ function showLeaderBoardData() {
 						item.max_hit+' HITS' +
 						'</div>'
 					);
-				});
+				});*/
 
-				for (var i = 0; i < 3; i++) {
+				for (var i = 0; i < 10; i++) {
 					item=data.user[i];
-					$("#top3score").append(
-						'<div style="width: 31.33%;float:left;padding:0% 1%;">'+
+					
+					if(i<3){
+						$("#top3score").append('<div class="ecahPlayerDiv">'+
+											'<div class="ecahPlayerImageDiv">'+
+												'<div class="batchContDiv">'+
+													'<img src="images/'+i+'_b.png" class="batchIcon">'+
+												'</div>'+
+												'<div class="eachTopPlayerImageDiv">'+
+													'<img src="'+domain+'beat/php/assets/' + item.user_image_id + '.jpg" class="eachTopPlayerImage">'+
+												'</div>'+
+											'</div>'+
+											'<div class="ecahPlayerInfoDiv">'+
+												'<div class="playerHitInfo">'+item.max_hit+' HITS'+'</div>'+
+												'<div class="playerInfo">'+item.name+'</div>'+
+											'</div>'+
+										'</div>');
+					}
+					else{
+						
+						item=data.user[i];
+							$("#top10score").append(
+								'<div style="width: 100%; float: left;">' +
+								'<div style="width: 46%; float: left; padding: 2%; text-align: left; color: #000;text-transform: uppercase;">' +
+								item.name +
+								'</div>' +
+								'<div style="width: 46%; float: left; padding: 2%; text-align: right; color: #000;text-transform: uppercase;">' +
+								item.max_hit+' HITS' +
+								'</div>'
+							);
+						
+					}
+				
+					
+					
+					
+					
+						/*'<div style="width: 31.33%;float:left;padding:0% 1%;">'+
 						'<div style="width: 100%;float: left;margin-bottom: 20px;">'+
 							'<img src="'+domain+'beat/php/assets/' + item.user_image_id + '.jpg" style="width: 90%; border: 1px solid #e4e4e4;margin: 0% 5%;">'+
 						'</div>'+
@@ -39,7 +75,7 @@ function showLeaderBoardData() {
 							'</div>'+
 						'</div>'+
 					'</div>'
-					);
+					);*/
 				}
 			}
 		}

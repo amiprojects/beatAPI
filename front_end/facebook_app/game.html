@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="css/header.css" />
 <link rel="stylesheet" href="css/responsive_header.css" />
 <link rel="stylesheet" href="css/flipclock.css">
+<link rel="stylesheet" href="css/game.css">
+<link rel="stylesheet" href="css/responsive_game.css">
 
 <script src="js/url.js"></script>
 <script src="js/jquery-1.12.0.min.js"></script>
@@ -35,19 +37,15 @@ body {
 			<div class="header_menu_div">
 				<div class="header_menu">
 					<div style="text-align: right;" class="menu_option">
-						<!--<a href="" style="text-decoration: none; color: #8c8c8c;">-->
-							<strong onclick="openAbtPg();">ABOUT</strong>
-						<!--</a>-->
+						<strong onclick="openAbtPg();">ABOUT</strong>
 					</div>
 
 					<div style="text-align: center;" class="menu_option">
-						<strong>RESULTS</strong>
+						<strong onclick="openResultPg();">RESULTS</strong>
 					</div>
 
 					<div style="text-align: left;" class="menu_option_1">
-						<!--<a href="leaderboard.php" style="text-decoration: none;" class="activePage">-->
-							<strong onclick="openLdrBrdPg();">LEADERBOARD</strong>
-						<!--</a>-->
+						<strong onclick="openLdrBrdPg();">LEADERBOARD</strong>
 					</div>
 				</div>
 			</div>
@@ -55,25 +53,18 @@ body {
 
 
 		<div data-role="main">
-			<div style="width: 100%; height: auto; float: left; padding-top: 2%;">
-				<div style="width: 38%; height: 1px; float: left;"></div>
-				<div
-					style="width: 24%; height: auto; float: left; text-align: center; position: relative; display: inline;">
-					<div id="selfImage"
-						style="width: 308px; height: auto; float: left; min-height: 610px; /*background-image: url('images/player-image-for-frame.png');*/ background-repeat: no-repeat;">
-						<img id="hit-image-frame" style="bottom: 0; right: 4px;"
-							src="images/frame-with-hit-button.png"> <img
-							onclick="totalHitFunction();"
-							style="bottom: 0; right: 33%; top: 86%; position: absolute; width: 100px; height: 100px; left: 106px;"
-							src="images/hiti-button.png">
-						<div
-							style="position: absolute; bottom: 11px; right: -42px; width: 30px; height: 30px;">
-							<span style="color: white;" id="hitTimer">15</span>
-						</div>
+			<div class="pageMainDiv">
+				<div class="pageImageDiv">
+					<div id="selfImage" class="playerBGimage">
+						<img id="hit-image-frame" src="images/frame-with-hit-button.png" class="changebleFrame">
 					</div>
-
+					<div class="hitNcountDiv"> 
+						<div class="hitImageDiv">
+							<img onclick="totalHitFunction();" src="images/hiti-button.png" class="hitImage">
+						</div>
+						<div class="timeCounter" id="hitTimer">15</div>
+					</div>
 				</div>
-				<div style="width: 38%; height: 1px; float: left;"></div>
 			</div>
 		</div>
 

@@ -83,7 +83,7 @@ function fbconnect() {
 				access_token : "*****"
 			},
 			success : function(data) {
-				window.sessionStorage.setItem("userId", data.user_id);
+				window.sessionStorage.setItem("userId", data.user_id);				
 				$.ajax({
 					url : serverURL + "php/v1/set-session.php",
 					type : 'post',

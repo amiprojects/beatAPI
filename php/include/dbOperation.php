@@ -1,5 +1,7 @@
 <?php
 require_once dirname ( __FILE__ ) . '/DbConnect.php';
+require_once dirname ( __FILE__ ) . '/gifmaker.php';
+
 class dboperation extends DbConnect {
 	public $conn;
 	public $db;
@@ -46,6 +48,40 @@ class dboperation extends DbConnect {
 			} else {
 				$response ["error"] = true;
 				$response ["msg"] = INSERT_FAILED;
+			}
+		} else {
+			$response ["error"] = true;
+			$response ["msg"] = QUERY_EXCEPTION;
+		}
+		return $response;
+	}
+	
+	
+	/*get max user score*/
+	
+	public function getMaxScoreByUserId($id) {
+		$response = array ();		
+		
+		$sql1 = "select img.user_image_url,hit.total_hit_count from user_image img,hit_counter hit where img.id=hit.user_image_id and hit.total_hit_count=(SELECT MAX(hc.total_hit_count) FROM `hit_counter` hc WHERE hc.user_id=?) and hit.user_id=? and hit.total_hit_count>0;";
+		
+		$stmt1 = $this->conn->prepare ( $sql1 );
+		if ($stmt1) {
+			$stmt1->bind_param ( "ii", $id,$id );
+			$stmt1->execute ();
+			$stmt1->store_result ();
+			$num_rows1 = $stmt1->num_rows;
+			if ($num_rows1 > 0) {
+				$stmt1->bind_result ( $user_image_url, $total_hit_count );
+				$result = $stmt1->fetch ();
+				
+				$response ["error"] = false;
+				$response ["msg"] = DATA_FOUND;
+				$response ["user_image_url"] = $user_image_url;
+				$response ["total_hit_count"] = $total_hit_count;
+				
+			} else {
+				$response ["error"] = true;
+				$response ["msg"] = DATA_NOT_FOUND;
 			}
 		} else {
 			$response ["error"] = true;
@@ -138,7 +174,7 @@ class dboperation extends DbConnect {
 	function insertUserImage($image, $userId) {
 		$response = array ();
 		$this->conn->autocommit ( false );
-		$savePath = "../assets/";
+		$savePath = "../assets";
 		$date = Date ( "Y-m-d H:i:s" );
 		
 		$sql = "INSERT INTO user_image (user_id, date_time) VALUES (?,?);";
@@ -180,6 +216,40 @@ class dboperation extends DbConnect {
 			$response ["msg"] = QUERY_EXCEPTION;
 		}
 		return $response;
+	}
+	
+	/**
+	 * Save share image
+	 * @param unknown $image
+	 * @param unknown $userId
+	 * @return boolean[]|string[]
+	 */
+	function saveShareImage($image, $userId) {
+		$response = array ();
+		$this->conn->autocommit ( false );
+		$savePath = "../assets/";
+		$date = Date ( "Y-m-d H:i:s" );
+		$filename=uniqid();
+		
+		try {
+			$fp = fopen ( $savePath . 'share_image/' .$userId."_". $filename . ".png", "wb" );
+			fwrite ( $fp, base64_decode ( $image ) );
+			fclose ( $fp );
+			$imgURL = "beat/php/assets/share_image/" . $userId."_". $filename . ".png";
+			$response ["error"] = false;
+			$response ["image_url"] = $imgURL;
+		}catch (Exception $e){
+			$response ["error"] = true;
+			$response ["msg"] = "Image: " . $e->getMessage();
+		}
+		
+		return $response;
+	}
+	
+	
+	function saveGIF($user_image_url, $number_of_hits){
+		$gifmaker=new gifmaker();
+		return $gifmaker->saveGIF($user_image_url, $number_of_hits);
 	}
 	
 	/**
@@ -273,11 +343,31 @@ class dboperation extends DbConnect {
 		}
 		return $response;
 	}
+	
+	function getFrameImages(){
+		$response=array();
+		try {
+			$response ["error"] = false;
+			
+			$response ["frame1"] = base64_encode(file_get_contents("../assets/frame_images/animated-frame1c.png"));
+			$response ["frame2"] = base64_encode(file_get_contents("../assets/frame_images/animated-frame2c.png"));
+			$response ["frame3"] = base64_encode(file_get_contents("../assets/frame_images/animated-frame3c.png"));
+			$response ["frame4"] = base64_encode(file_get_contents("../assets/frame_images/animated-frame4c.png"));
+			
+		}catch (Exception $e){
+			$response ["error"] = true;
+			$response ["msg"] = "Image: " . $e->getMessage();
+		}
+		return $response;
+	}
+	
 	function descCmp($a, $b) {
 		if ($a->max_hit == $b->max_hit) {
 			return 0;
 		}
 		return ($a->max_hit > $b->max_hit) ? - 1 : 1;
 	}
+	
+	
 }
 ?>
